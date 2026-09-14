@@ -1,0 +1,14 @@
+{
+ "version":1,
+ "context":{"productKey":"task-demo","platform":"android","baselineSourceId":"new"},
+ "sources":[
+  {"id":"old","kind":"baseline","locator":"request.md：模拟 v1.0.1 任务身份","read":true,"identity":{"productKey":"task-demo","platform":"android","version":"1.0.1"}},
+  {"id":"new","kind":"user","locator":"request.md：模拟确认与绘制范围","read":true,"identity":{"productKey":"task-demo","platform":"android","version":"1.0.6"},"relation":{"type":"rolls-back-to","sourceId":"old","scope":"任务身份"},"block":{"page":"示例输入","role":"change","status":"current"}}
+ ],
+ "requirements":[
+  {"id":"R001","sourceIds":["old","new"],"status":"confirmed","inScope":true,"pageKey":"home","applicablePageKeys":["home","history","detail"],"ruleState":"current","ruleType":"behavior","module":"任务状态","statement":"失败和成功状态跨 Home、History、Detail 同步，重试不新增记录。","trigger":"任务结果返回","result":"失败显示 Failed，成功显示 Done。","fieldSources":[{"field":"statement","sourceIds":["new"]},{"field":"trigger","sourceIds":["new"]},{"field":"result","sourceIds":["new"]}]},
+  {"id":"R002","sourceIds":["new"],"status":"confirmed","inScope":true,"pageKey":"history","ruleState":"current","ruleType":"behavior","module":"重试","statement":"History 的 Try Again 改为 Retry，点击重试当前任务，不新增记录。","fieldSources":[{"field":"statement","sourceIds":["new"]},{"field":"exactCopies","sourceIds":["new"]}],"exactCopies":[{"text":"Retry","target":{"pageKey":"history","kind":"widget","key":"retry","field":"text"}}]},
+  {"id":"R003","sourceIds":["new"],"status":"confirmed","inScope":true,"pageKey":"home","ruleState":"current","ruleType":"display","module":"美术","statement":"区分失败与成功状态，无需新增插画。","fieldSources":[{"field":"statement","sourceIds":["new"]}]}
+ ],
+ "questions":[]
+}

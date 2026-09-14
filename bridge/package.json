@@ -1,0 +1,8 @@
+{
+  "name": "axure-live-trial",
+  "version": "0.3.1",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "dependencies": {"@modelcontextprotocol/sdk": "1.30.0", "zod": "3.25.76"}
+}

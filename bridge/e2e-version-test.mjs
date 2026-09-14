@@ -1,0 +1,48 @@
+// Run only in an explicitly disposable compatibility workspace.
+import assert from 'node:assert/strict';
+import {readFile,writeFile,copyFile,mkdir} from 'node:fs/promises';
+import {resolve,join,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {spawnSync} from 'node:child_process';
+import {randomUUID} from 'node:crypto';
+import {Client} from '@modelcontextprotocol/sdk/client/index.js';
+import {StdioClientTransport} from '@modelcontextprotocol/sdk/client/stdio.js';
+const [workspace,sourceScene]=process.argv.slice(2);
+if(!workspace||!sourceScene)throw Error('Usage: e2e-version-test.mjs <disposable workspace> <scene.json>');
+const root=resolve(workspace),bridge=dirname(fileURLToPath(import.meta.url));
+const config=JSON.parse(await readFile(join(root,'.axure-workflow.json'),'utf8'));
+assert.equal(resolve(config.projectRp).startsWith(root+'\\'),true,'Test RP must be inside disposable workspace');
+const scene=JSON.parse(await readFile(resolve(sourceScene),'utf8'));
+await mkdir(join(root,'output'),{recursive:true});
+await copyFile(resolve(sourceScene),join(root,'scene-v1.json'));
+const c=new Client({name:'three-build-regression',version:'1.3.0'});
+const call=async(name,args={},shouldFail=false)=>{const r=await c.callTool({name,arguments:args});if(shouldFail){assert.equal(r.isError,true);return r;}if(r.isError)throw Error(r.content[0].text);return JSON.parse(r.content[0].text);};
+const run=spec=>{const r=spawnSync(process.execPath,[join(bridge,'workflow.mjs'),'apply','--spec',spec,'--out',join(root,'output'),'--session',config.sessionFile,'--project',config.projectRp],{encoding:'utf8',timeout:120000,windowsHide:true});if(r.status!==0)throw Error(r.stderr||r.stdout||r.error);console.log(r.stdout.trim());};
+try{
+ await c.connect(new StdioClientTransport({command:process.execPath,args:[join(bridge,'mcp-live.mjs'),'--session',config.sessionFile]}));
+ const status=await call('axure_live_status');assert.equal(status.faulted,false);
+ run(join(root,'scene-v1.json'));
+ const map1=JSON.parse(await readFile(join(root,'output/axure-map.json'),'utf8'));
+ const firstPage=map1.pages.home;
+ const title=Object.values(firstPage.widgets).find(w=>w.patch.text==='Printer');assert.ok(title);
+ await call('axure_live_open_page',{pageId:firstPage.pageId});
+ const target={pageId:firstPage.pageId,widgetId:title.widgetId};
+ const before=await call('axure_live_read',target);
+ await call('axure_live_edit',{...target,kind:'text',changes:{text:'Must not be applied'},expectedFingerprint:'0'.repeat(64),dryRun:false},true);
+ assert.equal((await call('axure_live_read',target)).fingerprint,before.fingerprint);
+ const patch={text:'Native edit verified',x:before.state.x+8,y:before.state.y+4,width:280,height:44,fill:'#FFF4D0',textColor:'#AA2200',fontSize:17,bold:false};
+ const input={pageId:target.pageId,requestId:randomUUID(),dryRun:false,items:[{widgetId:target.widgetId,expectedFingerprint:before.fingerprint,patch}]};
+ const edited=await call('axure_live_batch',input);assert.equal(edited.nativeUndo,true);
+ const read=await call('axure_live_read',target);assert.equal(read.state.text,patch.text);assert.equal(read.state.x,patch.x);assert.equal(read.state.fontSize,17);
+ await call('axure_live_undo');assert.equal((await call('axure_live_read',target)).fingerprint,before.fingerprint);
+ await call('axure_live_redo');assert.equal((await call('axure_live_read',target)).fingerprint,read.fingerprint);
+ await call('axure_live_undo');assert.equal((await call('axure_live_read',target)).fingerprint,before.fingerprint);
+ const updated=structuredClone(scene);updated.pages[0].widgets.find(w=>w.key==='title').text='Printer — Updated';updated.pages[0].widgets.find(w=>w.key==='button').fill='#247F62';updated.pages[1].widgets.find(w=>w.key==='row').text='Contact Support';
+ await writeFile(join(root,'scene-v2.json'),JSON.stringify(updated,null,2));run(join(root,'scene-v2.json'));
+ const map2=JSON.parse(await readFile(join(root,'output/axure-map.json'),'utf8'));assert.equal(map2.pages.home.pageId,firstPage.pageId);assert.deepEqual(Object.keys(map2.pages),Object.keys(map1.pages));
+ for(const [pageKey,page] of Object.entries(map1.pages))for(const [key,w] of Object.entries(page.widgets))assert.equal(map2.pages[pageKey].widgets[key].widgetId,w.widgetId);
+ run(join(root,'scene-v2.json'));const verify=JSON.parse(await readFile(join(root,'output/verification.json'),'utf8'));assert.equal(verify.writeBatches,0);assert.equal(verify.nativeRendered,true);
+ const final=await call('axure_live_status');assert.equal(final.pid,status.pid);assert.equal(final.faulted,false);
+ const evidence={version:status.version,pid:status.pid,createPages:true,createShapes:true,readback:true,nativeRender:true,staleWriteRejected:true,nativeUndoRedo:true,sameProcessIncrementalUpdate:true,stablePageAndWidgetIds:true,idempotentApply:true,persistenceAfterRestart:'pending',verifiedAt:new Date().toISOString()};
+ await writeFile(join(root,'e2e-results.json'),JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence));
+}finally{await c.close();}

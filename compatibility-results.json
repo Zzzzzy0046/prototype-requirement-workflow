@@ -1,0 +1,96 @@
+{
+  "release": "1.3.0",
+  "platform": "Windows",
+  "verifiedAt": "2026-09-14T11:29:07.568Z",
+  "scope": "Two plain pages with native Rectangle/Paragraph/Ellipse, Chinese notes, incremental updates and save/reopen. No desktop input automation; no complex interactions certified.",
+  "sceneTests": {
+    "passed": 5,
+    "failed": 0
+  },
+  "results": [
+    {
+      "version": "11.0.0.4134",
+      "createPages": true,
+      "createShapes": true,
+      "readback": true,
+      "nativeRender": true,
+      "staleWriteRejected": true,
+      "nativeUndoRedo": true,
+      "sameProcessIncrementalUpdate": true,
+      "stablePageAndWidgetIds": true,
+      "idempotentApply": true,
+      "persistenceAfterRestart": true,
+      "verifiedAt": "2026-09-14T11:22:21.549Z",
+      "reopenWriteBatches": 0,
+      "nativeRenderVisualReview": "passed",
+      "renders": {
+        "home": {
+          "width": 752,
+          "height": 680,
+          "sha256": "db2c2dbf3914b100b3e1a394e0d4b8b8b1f90ed06e1b798b04cba5d9ac8f0d46"
+        },
+        "settings": {
+          "width": 1030,
+          "height": 188,
+          "sha256": "ebd847bac2de5480e159f5d1ab382988effefca3959154d22e2304978d1bf0fa"
+        }
+      }
+    },
+    {
+      "version": "11.0.0.4137",
+      "createPages": true,
+      "createShapes": true,
+      "readback": true,
+      "nativeRender": true,
+      "staleWriteRejected": true,
+      "nativeUndoRedo": true,
+      "sameProcessIncrementalUpdate": true,
+      "stablePageAndWidgetIds": true,
+      "idempotentApply": true,
+      "persistenceAfterRestart": true,
+      "verifiedAt": "2026-09-14T11:22:01.347Z",
+      "reopenWriteBatches": 0,
+      "nativeRenderVisualReview": "passed",
+      "renders": {
+        "home": {
+          "width": 752,
+          "height": 680,
+          "sha256": "db2c2dbf3914b100b3e1a394e0d4b8b8b1f90ed06e1b798b04cba5d9ac8f0d46"
+        },
+        "settings": {
+          "width": 1030,
+          "height": 188,
+          "sha256": "ebd847bac2de5480e159f5d1ab382988effefca3959154d22e2304978d1bf0fa"
+        }
+      }
+    },
+    {
+      "version": "11.0.0.4149",
+      "createPages": true,
+      "createShapes": true,
+      "readback": true,
+      "nativeRender": true,
+      "staleWriteRejected": true,
+      "nativeUndoRedo": true,
+      "sameProcessIncrementalUpdate": true,
+      "stablePageAndWidgetIds": true,
+      "idempotentApply": true,
+      "persistenceAfterRestart": true,
+      "verifiedAt": "2026-09-14T11:22:47.019Z",
+      "reopenWriteBatches": 0,
+      "nativeRenderVisualReview": "passed",
+      "renders": {
+        "home": {
+          "width": 752,
+          "height": 680,
+          "sha256": "db2c2dbf3914b100b3e1a394e0d4b8b8b1f90ed06e1b798b04cba5d9ac8f0d46"
+        },
+        "settings": {
+          "width": 1030,
+          "height": 188,
+          "sha256": "ebd847bac2de5480e159f5d1ab382988effefca3959154d22e2304978d1bf0fa"
+        }
+      }
+    }
+  ]
+}

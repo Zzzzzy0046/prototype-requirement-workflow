@@ -1,0 +1,22 @@
+{
+ "version":1,"project":"Task Board · 共享规则示例","brief":"虚构输入：两功能页共享一条任务规则，明确回退基线与本次差异；不是实际产品或原生验收证明。","noteProfile":"android-review","assumptions":[],"outOfScope":["Detail 仅记录影响，本轮不绘制","动态交互、富文本、自动反向同步"],
+ "pages":[
+  {"key":"home","name":"Home","width":1120,"height":760,"widgets":[
+   {"key":"frame","shape":"Rectangle","x":0,"y":50,"width":360,"height":640,"fill":"#FFFFFF","borderColor":"#797979"},
+   {"key":"title","shape":"Paragraph","text":"01 · Home / Failed","x":0,"y":0,"width":360,"height":32,"fontFamily":"Arial","fontSize":13.5,"bold":true},
+   {"key":"status","shape":"Rectangle","text":"Task 01\nFailed","x":24,"y":90,"width":312,"height":100,"fill":"#F8FAFC"}
+  ],"notes":[
+   {"key":"sync","kind":"shared-rule","title":"R001 · 共享状态与任务身份","x":410,"y":50,"width":650,"lines":["1、采用已确认的 v1.0.1 任务身份规则；不累加中间版本的新增记录逻辑。","2、失败显示 Failed；重试成功显示 Done，不新增记录。","3、Detail 受此规则影响，本轮仅登记，不绘制该页面。"],"table":{"columns":["事件","受影响页面","结果与例外"],"rows":[["任务失败","Home / History / Detail","同一任务更新为 Failed"],["History 重试成功","Home / History / Detail","更新为 Done，不新增记录"]]}},
+   {"key":"art","kind":"art","title":"美术说明","x":410,"y":450,"width":650,"lines":["1、失败与成功状态需可区分；无需新增插画。","2、本页框外标题与共享说明属于评审信息，不是 App UI。"]}
+  ]},
+  {"key":"history","name":"History","width":1120,"height":760,"widgets":[
+   {"key":"frame","shape":"Rectangle","x":0,"y":50,"width":360,"height":640,"fill":"#FFFFFF","borderColor":"#797979"},
+   {"key":"title","shape":"Paragraph","text":"02 · History / Failed","x":0,"y":0,"width":360,"height":32,"fontFamily":"Arial","fontSize":13.5,"bold":true},
+   {"key":"status","shape":"Rectangle","text":"Task 01\nFailed","x":24,"y":90,"width":312,"height":100,"fill":"#F8FAFC"},
+   {"key":"retry","shape":"Rectangle","text":"Retry","x":24,"y":210,"width":312,"height":44,"fill":"#E8F0FE"}
+  ],"notes":[
+   {"key":"status-rule","kind":"module","title":"R001 · 历史记录状态","x":410,"y":50,"width":650,"lines":["1、与 Home 引用同一任务身份及共享规则。失败为 Failed，成功为 Done。","2、重试结果同步 Home 与 Detail，不生成重复历史记录。"]},
+   {"key":"retry-change","kind":"change","title":"R002 · 本次改动","x":410,"y":240,"width":650,"lines":["1、旧：Try Again → 新：Retry。","2、点击 Retry 重试当前任务；沿用任务身份，成功后按 R001 更新状态。","3、本原型静态表达规则，未实现可执行重试交互。"]}
+  ]}
+ ]
+}

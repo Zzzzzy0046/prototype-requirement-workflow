@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "delivery": "complete",
+  "includedRequirementIds": [
+    "R001",
+    "R002",
+    "R003",
+    "R004"
+  ],
+  "template": {
+    "profile": "android-review",
+    "reason": "虚构需求明确选择安卓评审格式。"
+  },
+  "pages": [
+    {
+      "key": "home",
+      "name": "Home",
+      "boards": [
+        {
+          "key": "main",
+          "purpose": "未连接状态的主页主画板，不新增功能页。"
+        }
+      ]
+    }
+  ],
+  "expressions": [
+    {
+      "requirementId": "R001",
+      "pageKey": "home",
+      "boardKey": "main",
+      "method": "widget-and-note",
+      "reason": "标题可见，页面用途写在紧邻说明。",
+      "widgetKeys": [
+        "app-title"
+      ],
+      "noteKeys": [
+        "purpose"
+      ]
+    },
+    {
+      "requirementId": "R002",
+      "pageKey": "home",
+      "boardKey": "main",
+      "method": "widget-and-note",
+      "reason": "展示连接状态，说明不增加连接入口。",
+      "widgetKeys": [
+        "device-status"
+      ],
+      "noteKeys": [
+        "connection"
+      ]
+    },
+    {
+      "requirementId": "R003",
+      "pageKey": "home",
+      "boardKey": "main",
+      "method": "widget-and-note",
+      "reason": "按钮和点击规则配对，不因目的地而扩展范围。",
+      "widgetKeys": [
+        "print-document"
+      ],
+      "noteKeys": [
+        "document"
+      ]
+    },
+    {
+      "requirementId": "R004",
+      "pageKey": "home",
+      "boardKey": "main",
+      "method": "note-only",
+      "reason": "范围约束仅在说明中表达。",
+      "widgetKeys": [],
+      "noteKeys": [
+        "scope"
+      ]
+    }
+  ],
+  "decorations": [
+    {
+      "pageKey": "home",
+      "widgetKey": "frame",
+      "role": "frame",
+      "reason": "安卓 360×640 评审画框。"
+    },
+    {
+      "pageKey": "home",
+      "widgetKey": "board-title",
+      "role": "review-title",
+      "reason": "框外评审标题，不是 App UI。"
+    },
+    {
+      "pageKey": "home",
+      "widgetKey": "marker-1-ring",
+      "role": "number-marker",
+      "reason": "对应右侧说明编号。"
+    },
+    {
+      "pageKey": "home",
+      "widgetKey": "marker-1-text",
+      "role": "number-marker",
+      "reason": "对应右侧说明编号。"
+    },
+    {
+      "pageKey": "home",
+      "widgetKey": "marker-2-ring",
+      "role": "number-marker",
+      "reason": "对应右侧说明编号。"
+    },
+    {
+      "pageKey": "home",
+      "widgetKey": "marker-2-text",
+      "role": "number-marker",
+      "reason": "对应右侧说明编号。"
+    },
+    {
+      "pageKey": "home",
+      "widgetKey": "marker-3-ring",
+      "role": "number-marker",
+      "reason": "对应右侧说明编号。"
+    },
+    {
+      "pageKey": "home",
+      "widgetKey": "marker-3-text",
+      "role": "number-marker",
+      "reason": "对应右侧说明编号。"
+    },
+    {
+      "pageKey": "home",
+      "widgetKey": "marker-4-ring",
+      "role": "number-marker",
+      "reason": "对应右侧说明编号。"
+    },
+    {
+      "pageKey": "home",
+      "widgetKey": "marker-4-text",
+      "role": "number-marker",
+      "reason": "对应右侧说明编号。"
+    }
+  ]
+}

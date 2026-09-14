@@ -1,0 +1,249 @@
+{
+  "version": 1,
+  "project": "Printer · 必要提问示例",
+  "brief": "虚构教学案例：先确认未连接时是否允许选择文件，再绘制一个 Home。已采用示例答复，不代表真实产品规则。",
+  "noteProfile": "android-review",
+  "assumptions": [],
+  "outOfScope": [
+    "文件选择及后续打印流程的页面绘制",
+    "历史、设置、登录、订阅和复杂交互"
+  ],
+  "pages": [
+    {
+      "key": "home",
+      "name": "Home",
+      "width": 800,
+      "height": 720,
+      "widgets": [
+        {
+          "key": "frame",
+          "shape": "Rectangle",
+          "text": "",
+          "x": 10,
+          "y": 46,
+          "width": 360,
+          "height": 640,
+          "fontFamily": "Arial",
+          "fontSize": 11,
+          "textColor": "#333333",
+          "fill": "#FFFFFF",
+          "borderColor": "#797979",
+          "borderWidth": 1,
+          "cornerRadius": 0
+        },
+        {
+          "key": "board-title",
+          "shape": "Paragraph",
+          "text": "主页",
+          "x": 10,
+          "y": 10,
+          "width": 360,
+          "height": 25,
+          "fontFamily": "Arial",
+          "fontSize": 13.5,
+          "textColor": "#333333",
+          "bold": true
+        },
+        {
+          "key": "app-title",
+          "shape": "Paragraph",
+          "text": "Printer",
+          "x": 34,
+          "y": 75,
+          "width": 290,
+          "height": 36,
+          "fontFamily": "Arial",
+          "fontSize": 18,
+          "textColor": "#333333",
+          "bold": true
+        },
+        {
+          "key": "device-status",
+          "shape": "Paragraph",
+          "text": "No printer connected",
+          "x": 34,
+          "y": 168,
+          "width": 300,
+          "height": 32,
+          "fontFamily": "Arial",
+          "fontSize": 13,
+          "textColor": "#333333",
+          "bold": true
+        },
+        {
+          "key": "print-document",
+          "shape": "Rectangle",
+          "text": "Print Document",
+          "x": 34,
+          "y": 250,
+          "width": 312,
+          "height": 48,
+          "fontFamily": "Arial",
+          "fontSize": 12,
+          "textColor": "#333333",
+          "fill": "#EEEEEE",
+          "borderColor": "#797979"
+        },
+        {
+          "key": "marker-1-ring",
+          "shape": "Ellipse",
+          "text": "",
+          "x": 415,
+          "y": 46,
+          "width": 26,
+          "height": 26,
+          "fontFamily": "Arial",
+          "fontSize": 11,
+          "textColor": "#333333",
+          "fill": "#FFFFFF",
+          "borderColor": "#3758CC",
+          "borderWidth": 1
+        },
+        {
+          "key": "marker-1-text",
+          "shape": "Ellipse",
+          "text": "1",
+          "x": 417,
+          "y": 48,
+          "width": 22,
+          "height": 22,
+          "fontFamily": "Arial",
+          "fontSize": 9.75,
+          "textColor": "#FFFFFF",
+          "fill": "#3758CC",
+          "borderWidth": 0
+        },
+        {
+          "key": "marker-2-ring",
+          "shape": "Ellipse",
+          "text": "",
+          "x": 415,
+          "y": 160,
+          "width": 26,
+          "height": 26,
+          "fontFamily": "Arial",
+          "fontSize": 11,
+          "textColor": "#333333",
+          "fill": "#FFFFFF",
+          "borderColor": "#3758CC",
+          "borderWidth": 1
+        },
+        {
+          "key": "marker-2-text",
+          "shape": "Ellipse",
+          "text": "2",
+          "x": 417,
+          "y": 162,
+          "width": 22,
+          "height": 22,
+          "fontFamily": "Arial",
+          "fontSize": 9.75,
+          "textColor": "#FFFFFF",
+          "fill": "#3758CC",
+          "borderWidth": 0
+        },
+        {
+          "key": "marker-3-ring",
+          "shape": "Ellipse",
+          "text": "",
+          "x": 415,
+          "y": 290,
+          "width": 26,
+          "height": 26,
+          "fontFamily": "Arial",
+          "fontSize": 11,
+          "textColor": "#333333",
+          "fill": "#FFFFFF",
+          "borderColor": "#3758CC",
+          "borderWidth": 1
+        },
+        {
+          "key": "marker-3-text",
+          "shape": "Ellipse",
+          "text": "3",
+          "x": 417,
+          "y": 292,
+          "width": 22,
+          "height": 22,
+          "fontFamily": "Arial",
+          "fontSize": 9.75,
+          "textColor": "#FFFFFF",
+          "fill": "#3758CC",
+          "borderWidth": 0
+        },
+        {
+          "key": "marker-4-ring",
+          "shape": "Ellipse",
+          "text": "",
+          "x": 415,
+          "y": 520,
+          "width": 26,
+          "height": 26,
+          "fontFamily": "Arial",
+          "fontSize": 11,
+          "textColor": "#333333",
+          "fill": "#FFFFFF",
+          "borderColor": "#3758CC",
+          "borderWidth": 1
+        },
+        {
+          "key": "marker-4-text",
+          "shape": "Ellipse",
+          "text": "4",
+          "x": 417,
+          "y": 522,
+          "width": 22,
+          "height": 22,
+          "fontFamily": "Arial",
+          "fontSize": 9.75,
+          "textColor": "#FFFFFF",
+          "fill": "#3758CC",
+          "borderWidth": 0
+        }
+      ],
+      "notes": [
+        {
+          "key": "purpose",
+          "title": "页面说明",
+          "x": 453,
+          "y": 46,
+          "width": 322,
+          "lines": [
+            "1、Home 为主页，本次仅绘制一个主画板，App 标题为 Printer。"
+          ]
+        },
+        {
+          "key": "connection",
+          "title": "连接状态",
+          "x": 453,
+          "y": 160,
+          "width": 322,
+          "lines": [
+            "1、当前主画板展示 No printer connected。设备状态仅展示，本次不添加连接按钮。"
+          ]
+        },
+        {
+          "key": "document",
+          "title": "文档入口",
+          "x": 453,
+          "y": 290,
+          "width": 322,
+          "lines": [
+            "1、点击 Print Document 进入文件选择。未连接时也允许先选文件，连接检查放在后续打印流程。",
+            "2、本次只说明去向，不绘制文件选择和打印流程，也不决定设备发现方式。"
+          ]
+        },
+        {
+          "key": "scope",
+          "title": "本次范围",
+          "x": 453,
+          "y": 520,
+          "width": 322,
+          "lines": [
+            "1、不增加历史、设置、登录、订阅或复杂交互；点击结果由说明表达。"
+          ]
+        }
+      ]
+    }
+  ]
+}

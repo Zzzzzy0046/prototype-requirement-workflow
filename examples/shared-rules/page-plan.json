@@ -1,0 +1,16 @@
+{
+ "version":1,"delivery":"complete","includedRequirementIds":["R001","R002","R003"],
+ "template":{"profile":"android-review","reason":"示例指定安卓评审样式"},
+ "excludedImpacts":[{"requirementId":"R001","pageKey":"detail","reason":"用户只要求绘制 Home 和 History，Detail 影响在共享规则中登记。"}],
+ "pages":[{"key":"home","name":"Home","boards":[{"key":"main","purpose":"失败任务主画板"}]},{"key":"history","name":"History","boards":[{"key":"main","purpose":"失败记录及重试入口"}]}],
+ "expressions":[
+  {"requirementId":"R001","pageKey":"home","boardKey":"main","method":"widget-and-note","reason":"入口状态与共享同步规则","widgetKeys":["status"],"noteKeys":["sync"]},
+  {"requirementId":"R001","pageKey":"history","boardKey":"main","method":"widget-and-note","reason":"同一需求在历史页的表达","widgetKeys":["status"],"noteKeys":["status-rule"]},
+  {"requirementId":"R002","pageKey":"history","boardKey":"main","method":"widget-and-note","reason":"按钮和改动说明对应","widgetKeys":["retry"],"noteKeys":["retry-change"]},
+  {"requirementId":"R003","pageKey":"home","boardKey":"main","method":"note-only","reason":"美术要求置于 App 外","widgetKeys":[],"noteKeys":["art"]}
+ ],
+ "decorations":[
+  {"pageKey":"home","widgetKey":"frame","role":"frame","reason":"安卓手机框"},{"pageKey":"home","widgetKey":"title","role":"review-title","reason":"评审标题"},
+  {"pageKey":"history","widgetKey":"frame","role":"frame","reason":"安卓手机框"},{"pageKey":"history","widgetKey":"title","role":"review-title","reason":"评审标题"}
+ ]
+}

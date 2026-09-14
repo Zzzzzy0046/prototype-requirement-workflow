@@ -1,0 +1,230 @@
+{
+  "version": 1,
+  "project": "文件库 · 标注排版示例",
+  "brief": "只绘制 Home 的有文件和空状态，两个静态画板对应各自的中文说明；不新建状态页面。",
+  "assumptions": [
+    "虚构示例采用 360×640 单屏；文件数据仅用于原型展示。",
+    "本例暂定 Import 打开文件选择器，取消后保留当前状态；这不是所有产品的默认规则。"
+  ],
+  "outOfScope": [
+    "详情页面绘制",
+    "订阅、广告、登录",
+    "真实文件读取与动态交互"
+  ],
+  "pages": [
+    {
+      "key": "home",
+      "name": "Home",
+      "width": 1040,
+      "height": 1540,
+      "widgets": [
+        {
+          "key": "default-label",
+          "shape": "Paragraph",
+          "text": "S01 · Home（有文件）",
+          "x": 20,
+          "y": 10,
+          "width": 360,
+          "height": 35,
+          "fontSize": 15,
+          "bold": true
+        },
+        {
+          "key": "default-frame",
+          "shape": "Rectangle",
+          "x": 20,
+          "y": 60,
+          "width": 360,
+          "height": 640,
+          "borderColor": "#AAB0B8"
+        },
+        {
+          "key": "default-title",
+          "shape": "Paragraph",
+          "text": "My Files",
+          "x": 44,
+          "y": 84,
+          "width": 260,
+          "height": 44,
+          "fontSize": 20,
+          "bold": true
+        },
+        {
+          "key": "default-import",
+          "shape": "Rectangle",
+          "text": "Import",
+          "x": 44,
+          "y": 610,
+          "width": 312,
+          "height": 48,
+          "fill": "#1499CC",
+          "textColor": "#FFFFFF",
+          "fontSize": 13,
+          "borderWidth": 0,
+          "cornerRadius": 6
+        },
+        {
+          "key": "empty-label",
+          "shape": "Paragraph",
+          "text": "S02 · Home（空状态）",
+          "x": 20,
+          "y": 800,
+          "width": 360,
+          "height": 35,
+          "fontSize": 15,
+          "bold": true
+        },
+        {
+          "key": "empty-frame",
+          "shape": "Rectangle",
+          "x": 20,
+          "y": 850,
+          "width": 360,
+          "height": 640,
+          "borderColor": "#AAB0B8"
+        },
+        {
+          "key": "empty-title",
+          "shape": "Paragraph",
+          "text": "My Files",
+          "x": 44,
+          "y": 874,
+          "width": 260,
+          "height": 44,
+          "fontSize": 20,
+          "bold": true
+        },
+        {
+          "key": "empty-import",
+          "shape": "Rectangle",
+          "text": "Import",
+          "x": 44,
+          "y": 1400,
+          "width": 312,
+          "height": 48,
+          "fill": "#1499CC",
+          "textColor": "#FFFFFF",
+          "fontSize": 13,
+          "borderWidth": 0,
+          "cornerRadius": 6
+        },
+        {
+          "key": "file",
+          "shape": "Rectangle",
+          "text": "Project brief.docx",
+          "x": 44,
+          "y": 160,
+          "width": 312,
+          "height": 76,
+          "fontSize": 13,
+          "cornerRadius": 8
+        },
+        {
+          "key": "file-marker",
+          "shape": "Ellipse",
+          "text": "1",
+          "x": 330,
+          "y": 150,
+          "width": 28,
+          "height": 28,
+          "fill": "#4055B5",
+          "textColor": "#FFFFFF",
+          "fontSize": 10,
+          "borderWidth": 0
+        },
+        {
+          "key": "empty-message",
+          "shape": "Paragraph",
+          "text": "No files yet",
+          "x": 74,
+          "y": 1110,
+          "width": 260,
+          "height": 44,
+          "fontSize": 18,
+          "bold": true
+        },
+        {
+          "key": "empty-hint",
+          "shape": "Paragraph",
+          "text": "Import a file to get started.",
+          "x": 74,
+          "y": 1170,
+          "width": 260,
+          "height": 70,
+          "fontSize": 12
+        },
+        {
+          "key": "empty-marker",
+          "shape": "Ellipse",
+          "text": "2",
+          "x": 330,
+          "y": 1390,
+          "width": 28,
+          "height": 28,
+          "fill": "#4055B5",
+          "textColor": "#FFFFFF",
+          "fontSize": 10,
+          "borderWidth": 0
+        }
+      ],
+      "notes": [
+        {
+          "key": "default-purpose",
+          "title": "S01 · 页面说明",
+          "x": 430,
+          "y": 60,
+          "width": 520,
+          "lines": [
+            "1、Home 展示当前已导入的文件；本画板中的文件名为示例数据。",
+            "2、进入时有文件展示 S01；没有文件展示 S02。二者属于同一个 Home 页面。"
+          ]
+        },
+        {
+          "key": "default-actions",
+          "title": "S01 · ① 文件及导入操作",
+          "x": 430,
+          "y": 250,
+          "width": 520,
+          "lines": [
+            "1、点击文件进入该文件详情；详情页不在本次绘制范围。",
+            "2、点击 Import 打开文件选择器。成功导入后刷新当前列表；取消选择不改变已有文件。",
+            "3、导入失败时保留已有列表，提示无法导入，可再次点击 Import 重新选择。"
+          ]
+        },
+        {
+          "key": "empty-purpose",
+          "title": "S02 · 页面说明",
+          "x": 430,
+          "y": 850,
+          "width": 520,
+          "lines": [
+            "1、没有任何已导入文件时，展示 No files yet 和 Import。",
+            "2、此状态不是权限被拒绝、加载中或筛选无结果，不添加这些未经要求的画板。"
+          ]
+        },
+        {
+          "key": "empty-actions",
+          "title": "S02 · ② Import 操作",
+          "x": 430,
+          "y": 1040,
+          "width": 520,
+          "lines": [
+            "1、点击 Import 打开文件选择器，成功导入后切换为 S01。",
+            "2、取消选择或导入失败，保留空状态；失败时提示无法导入，允许重新选择。"
+          ]
+        },
+        {
+          "key": "art",
+          "title": "美术交付说明",
+          "x": 430,
+          "y": 1240,
+          "width": 520,
+          "lines": [
+            "1、同一 Home 的 2 个状态稿复用页面框架，无独立插画资源。蓝色编号是评审标注，不属于 App UI。",
+            "2、本示例不接入真实数据，不制作点击交互。"
+          ]
+        }
+      ]
+    }
+  ]
+}

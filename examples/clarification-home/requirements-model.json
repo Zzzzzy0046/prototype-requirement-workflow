@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "input",
+      "kind": "user",
+      "locator": "request.md#虚构需求",
+      "read": true
+    },
+    {
+      "id": "answer",
+      "kind": "user",
+      "locator": "request.md#虚构答复",
+      "read": true
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R001",
+      "sourceIds": [
+        "input"
+      ],
+      "status": "confirmed",
+      "inScope": true,
+      "pageKey": "home",
+      "module": "page",
+      "statement": "只画一个 Home，App 标题 Printer，英文 UI、中文说明。",
+      "display": "Printer",
+      "trigger": "",
+      "result": "",
+      "boundaries": [],
+      "exactCopies": [
+        {
+          "text": "Printer",
+          "target": {
+            "pageKey": "home",
+            "kind": "widget",
+            "key": "app-title",
+            "field": "text"
+          }
+        }
+      ]
+    },
+    {
+      "id": "R002",
+      "sourceIds": [
+        "input"
+      ],
+      "status": "confirmed",
+      "inScope": true,
+      "pageKey": "home",
+      "module": "connection",
+      "statement": "主画板展示未连接状态，只展示状态文字，不添加设备连接按钮。",
+      "display": "No printer connected",
+      "trigger": "",
+      "result": "",
+      "boundaries": [],
+      "exactCopies": []
+    },
+    {
+      "id": "R003",
+      "sourceIds": [
+        "input",
+        "answer"
+      ],
+      "status": "confirmed",
+      "inScope": true,
+      "pageKey": "home",
+      "module": "document",
+      "statement": "未连接时允许先选文件，连接检查放到后续打印流程，本次不画下游页面。",
+      "display": "Print Document",
+      "trigger": "点击 Print Document",
+      "result": "进入文件选择",
+      "boundaries": [
+        "本次不决定打印流程如何发现或连接设备。"
+      ],
+      "exactCopies": [
+        {
+          "text": "Print Document",
+          "target": {
+            "pageKey": "home",
+            "kind": "widget",
+            "key": "print-document",
+            "field": "text"
+          }
+        },
+        {
+          "text": "1、点击 Print Document 进入文件选择。未连接时也允许先选文件，连接检查放在后续打印流程。",
+          "target": {
+            "pageKey": "home",
+            "kind": "note",
+            "key": "document",
+            "field": "line",
+            "line": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "R004",
+      "sourceIds": [
+        "input"
+      ],
+      "status": "confirmed",
+      "inScope": true,
+      "pageKey": "home",
+      "module": "scope",
+      "statement": "不增加历史、设置、登录、订阅和复杂交互。",
+      "display": "",
+      "trigger": "",
+      "result": "",
+      "boundaries": [],
+      "exactCopies": []
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q001",
+      "question": "未连接时允许先选文件，还是必须先连接？",
+      "why": "会改变 Print Document 的可用状态和点击说明。",
+      "blocking": true,
+      "affectedRequirementIds": [
+        "R003"
+      ],
+      "status": "answered",
+      "answer": "允许先选文件，连接检查放在后续打印流程，本次不画后续页面。",
+      "answerSourceId": "answer"
+    }
+  ]
+}
