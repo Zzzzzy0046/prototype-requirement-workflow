@@ -2,7 +2,7 @@
 
 用户可以只说“做一个 Printer 的主页，有连接打印机、照片和文档入口，右侧写中文说明，放进 Axure”。也可以提供 PRD、HTML、图片或现有模板。这些都是有效输入，不强制用户使用模板。
 
-Agent 先按 page-expression.md 整理 requirements-model.json 和 page-plan.json，按 clarification.md 解决必要问题。下列信息的简要结论再进入 scene.brief（字符串）及 scene.assumptions / outOfScope（数组）；完整来源和问题不能只压缩成一段 brief。
+Agent 先按 guided-intake.md 判断这轮是方案探索、按稿执行、定点修改还是虚构示例。下表是内部核对维度，不是用户必填项；先读范围内资料，再对影响当前输出的关键缺口提问。明确任务不强加方案确认，模糊任务先给简短推荐。达到可画条件后按 page-expression.md 整理 requirements-model.json 和 page-plan.json，按 clarification.md 记录问题。简要结论进入 scene.brief 及 scene.assumptions / outOfScope；完整来源和问题不能只压缩成一句 brief。
 
 | 内容 | 处理方式 |
 | --- | --- |

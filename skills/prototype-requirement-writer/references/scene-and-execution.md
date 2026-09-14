@@ -31,7 +31,7 @@
 
 画板标题、蓝色编号、热点、美术交付提示使用普通 widgets（文本/矩形/椭圆）表达，不是动态交互。业务说明统一留在 notes，不能将说明只写成 UI widget 而导致 requirements.md 漏项。美术备注可作为单独 notes 组；使用红色装饰标题时不要复制出不一致的正文。
 
-当前 runner 新建的是普通页面，不支持自动创建页面树文件夹。使用与本 skill 匹配的 1.5.0 包，不静默丢弃字段或调用旧版 runner。scene 可选 noteProfile=default 或 android-review；未指定保持旧输出。安卓说明字体与宽度见 android-template-profile.md；HTML 与 Axure 使用相同编译结果，真实字形/行距仍需核对。notes.kind 和 table 见 note-expression.md；不需要修改底层适配器，但本版未重新完成三版本原生测试。
+当前 runner 新建的是普通页面，不支持自动创建页面树文件夹。使用与本 skill 匹配的 1.6.0 包，不静默丢弃字段或调用旧版 runner。scene 可选 noteProfile=default 或 android-review；未指定保持旧输出。安卓说明字体与宽度见 android-template-profile.md；HTML 与 Axure 使用相同编译结果，真实字形/行距仍需核对。notes.kind 和 table 见 note-expression.md；不需要修改底层适配器，但本版未重新完成三版本原生测试。
 
 shape 仅 `Rectangle / Paragraph / Ellipse`；fill、textColor、borderColor 用 `#RRGGBB` 或 `#RRGGBBAA`；支持 fontFamily、fontSize、bold、borderWidth、cornerRadius。默认字体 Microsoft YaHei，白底、深灰字、灰边框。默认文本最大 4000 字符；较长说明分段，不能截断原稿。文字是纯文本，不执行 HTML。
 

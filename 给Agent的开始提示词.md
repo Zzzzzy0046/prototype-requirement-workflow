@@ -1,22 +1,30 @@
-# 直接发给 Agent
+# 直接说需求即可
 
-在项目目录中打开 Codex，替换下面的需求即可。未安装 skill 时，直接要求 Agent 读取完整包内的 `skills/prototype-requirement-writer/SKILL.md`：
+已经安装 Skill 时，不需要复制运行协议、填写表格或准备完整 PRD。下面任选一句，换成你的产品即可：
 
 ```text
-使用 $prototype-requirement-writer 完成需求到 Axure 的完整流程。
-读取已安装的 skill 和当前项目配置；没有配置时使用我提供的目标 RP 路径。
-请自动检查依赖、连接或启动 Axure，我不手动运行启动脚本。
-目标 RP：填写自己已经新建并保存的测试 RP 完整路径（已有项目配置时不用再填）。
-
-我的需求：做一个 Printer App 的 Home 和 Connect Printer 两个页面。
-Home 提供连接打印机、Photos 和 Documents 入口；Connect Printer 展示可选设备和连接按钮。
-英文 UI，右侧写中文需求说明。主页就是一个完整主页，必要状态用静态图和文字表达，不做复杂交互。
-先整理有来源的需求和表达计划；影响页面范围、基线或关键行为的问题请集中问我，说明影响并给出有依据的建议。我的回答前不要默认选一个方案；不相关的明确部分可以继续，普通排版不用逐项问。不要重复问我已确认的内容。
-完成原型和说明后写进项目配置指定的 RP，并核对原生渲染。
+使用 $prototype-requirement-writer，帮我做一个 Printer 主页。
 ```
 
-之后直接说：“把 Home 的 Documents 改成 Print Documents，并同步右侧说明和 Axure。”
+```text
+使用 $prototype-requirement-writer，按我附的需求文档做原型和中文说明。
+```
 
-你也可以贴自己的 PRD、附参考图或指定现有 HTML；不用填专业模板。skill 会内部规范化需求。
+```text
+继续修改这个项目，把 Documents 改成 Print Documents，其他不动。
+```
 
-如果没有安装 skill：让 Agent 先读取“完整包解压目录/skills/prototype-requirement-writer/SKILL.md”，再提供项目目录与自己的需求。不要把 `session.json` 的内容粘贴到对话。
+Skill 会先读已有资料：信息足够就做；缺关键业务时给简短推荐并问你；普通排版自行处理。你不必提前知道页面/状态如何拆分，也不用告诉它怎样启动脚本。
+
+想先看效果，可以说“先给 HTML 预览，不写 Axure”；想试一个虚构案例，可以说“你决定，做个示例让我看看”。示例假设不会冒充正式业务要求。
+
+需要 Axure 时再说“把确认后的内容写进这个 RP”并提供路径；已有项目绑定则沿用。首次仍需你用受支持的 Axure 新建并保存空白 RP，Agent 在需要时提醒，不要求一开始就提供。目标文件被普通窗口占用时，先保存关闭，再让 Agent 连接。未写入时它应明确告诉你。
+
+未安装时，将完整包解压目录交给 Agent：
+
+```text
+读取这个包里的 skills/prototype-requirement-writer/SKILL.md，
+按它处理我接下来提供的需求；需要安装或连接时由你执行常规步骤。
+```
+
+不要粘贴 session.json、token 或账户凭证；不要把自己使用后产生的目录再打包给同事。环境条件和边界见 README-完整工作流.md。

@@ -1,2 +1,2 @@
-# Preserve the byte-exact 1.5.0 package and its checksum manifest.
+# Preserve release file bytes and checksum manifests without newline conversion.
 * -text
