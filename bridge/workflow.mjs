@@ -87,14 +87,25 @@ try{
    target=map.pages[page.key];
   }
   const pageId=target.pageId;await call('axure_live_open_page',{pageId});
+  if((target.groups??[]).length){
+   const topology=await call('axure_live_page',{pageId}),flatten=rows=>rows.flatMap(w=>[w,...flatten(w.Children??[])]),liveIds=new Set(flatten(topology.Widgets).map(w=>w.Id));
+   if(!Object.values(target.widgets).every(w=>liveIds.has(w.widgetId)))throw Error(`Mapped leaves missing before ungroup: ${page.key}`);
+   const presentGroups=target.groups.filter(id=>liveIds.has(id));
+   if(presentGroups.length!==target.groups.length){target.groups=presentGroups;await persist();}
+  }
+  if((target.groups??[]).length){
+   const input={pageId,requestId:randomUUID(),dryRun:false,groupIds:target.groups,expectedWidgetIds:Object.values(target.widgets).map(w=>w.widgetId)};
+   await call('axure_live_ungroup',{...input,dryRun:true});
+   await write('axure_live_ungroup',input,r=>{if(r.groupsRemoved!==target.groups.length||r.widgets!==Object.keys(target.widgets).length)throw Error('Ungroup count mismatch');target.groups=[];});writes++;
+  }
   const added=page.items.filter(i=>!target.widgets[i.key]);
   for(const batch of chunks(added)){
-   const input={pageId,requestId:randomUUID(),dryRun:false,groupName:`${page.key}-${target.groups.length+1}`,items:batch.map(({shape,name,patch})=>({shape,name,patch}))};
+   const input={pageId,requestId:randomUUID(),dryRun:false,items:batch.map(({shape,name,patch})=>({shape,name,patch}))};
    await call('axure_live_create_shapes',{...input,dryRun:true});
    await write('axure_live_create_shapes',input,r=>{
     if(r.count!==batch.length)throw Error('Create count mismatch');
     for(let i=0;i<batch.length;i++){const b=batch[i],w=r.widgets[i];check(w.state,b.patch,b.key);target.widgets[b.key]={widgetId:w.widgetId,fingerprint:w.fingerprint,shape:b.shape,patch:b.patch};}
-    target.groups.push(r.groupId);
+    if(r.groupId)target.groups.push(r.groupId);
    });writes++;
   }
   const changed=page.items.filter(i=>JSON.stringify(target.widgets[i.key].patch)!==JSON.stringify(i.patch));

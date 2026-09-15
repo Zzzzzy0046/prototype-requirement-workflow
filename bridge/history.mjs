@@ -15,7 +15,7 @@ export async function beginRun(out,{mode,model,plan,scene,planning}){
  const dir=join(history,runId);await mkdir(dir);
  const inputs={model:model??null,plan:plan??null,scene:scene??null};
  await writeFile(join(dir,'inputs.json'),JSON.stringify(inputs,null,2),{flag:'wx'});
- const start={runId,bundleVersion:'1.7.0',mode,startedAt:new Date().toISOString(),previousInputRunId:previous,inputHash:digest(inputs),changes:changes(before?.model,model),planningStage:planning.stage,status:planning.ok===false?'planning-blocked':'started',scriptTimingOnly:true};
+ const start={runId,bundleVersion:'1.9.0',mode,startedAt:new Date().toISOString(),previousInputRunId:previous,inputHash:digest(inputs),changes:changes(before?.model,model),planningStage:planning.stage,workflowStage:planning.workflowStage,status:planning.ok===false?'planning-blocked':'started',scriptTimingOnly:true};
  await writeFile(join(dir,'start.json'),JSON.stringify(start,null,2),{flag:'wx'});
  await writeFile(join(history,'latest-input.txt'),runId);
  const clock=performance.now();

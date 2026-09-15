@@ -32,4 +32,4 @@
 
 各产品的订阅价格、广告频率和 SDK、权限申请顺序、健康阈值、竞品链接、内部人员/排期、埋点 ID、具体 UI 文案和图片资产均被排除。它们只能作为对应产品的需求，不是模板默认值。
 
-可执行规则见 `skills/prototype-requirement-writer/references/house-review-profile.md`；六类模板见 `examples/review-template-library/`。
+可执行规则见 `skills/prototype-requirement-writer/references/house-review-profile.md`；六类模板见 `examples/reference/review-template-library/`。

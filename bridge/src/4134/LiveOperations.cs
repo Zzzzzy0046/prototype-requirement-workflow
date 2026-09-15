@@ -46,6 +46,7 @@ public static partial class LiveOperations {
     if(action=="page")return Call(svc,"GetPage","active",Guid.Parse(req.GetProperty("pageId").GetString()),(int?)2,false);
     if(action=="render-page")return Call(svc,"GetScreenshot","active",Guid.Parse(req.GetProperty("pageId").GetString()),null,null,1600);
     if(action=="create-shapes")return CreateShapes(req,svc,client,editor);
+    if(action=="ungroup")return Ungroup(req,svc,client,editor);
     if(action=="create-page")return CreatePage(req,svc,client);
     if(action=="open-page"){
      if(faulted)throw new Exception("Bridge faulted");

@@ -1,0 +1,119 @@
+{
+  "version": 2,
+  "project": "需求说明深度标准 · 脱敏示例",
+  "brief": "演示如何把权限页与系统回流写成可评审需求，并使用可编辑基础控件组合插画、遮罩和系统弹窗。",
+  "noteProfile": "house-review",
+  "assumptions": [],
+  "outOfScope": ["真实权限类型和业务理由", "具体文件格式", "广告与商业化", "动态交互"],
+  "pages": [
+    {
+      "key": "file-access",
+      "name": "File Access · 权限与系统回流",
+      "width": 1200,
+      "height": 1120,
+      "widgets": [
+        {"key": "explanation-frame", "shape": "Rectangle", "text": "", "x": 10, "y": 46, "width": 360, "height": 640, "fontFamily": "Arial", "fontSize": 11, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "explanation-title", "shape": "Paragraph", "text": "S01 · File Access（访问说明）", "x": 10, "y": 10, "width": 360, "height": 25, "fontFamily": "Arial", "fontSize": 13.5, "textColor": "#333333", "bold": true},
+        {"key": "explanation-status", "shape": "Paragraph", "text": "9:41                                      100%", "x": 28, "y": 58, "width": 324, "height": 18, "fontFamily": "Arial", "fontSize": 9, "textColor": "#6B7280"},
+        {"key": "app-title", "shape": "Paragraph", "componentRole": "app-bar", "text": "File Workspace", "x": 36, "y": 90, "width": 210, "height": 30, "fontFamily": "Arial", "fontSize": 16, "textColor": "#333333", "bold": true},
+        {"key": "later-action", "shape": "Paragraph", "componentRole": "button", "text": "Later", "x": 292, "y": 92, "width": 48, "height": 24, "fontFamily": "Arial", "fontSize": 10, "textColor": "#797979"},
+        {"key": "access-title", "shape": "Paragraph", "componentRole": "content", "text": "Access Your Files", "x": 46, "y": 138, "width": 278, "height": 34, "fontFamily": "Arial", "fontSize": 18, "textColor": "#333333", "bold": true},
+        {"key": "illustration-box", "shape": "Rectangle", "componentRole": "illustration", "text": "", "x": 46, "y": 190, "width": 278, "height": 220, "fontFamily": "Arial", "fontSize": 11, "fill": "#F2F2F2", "textColor": "#333333", "borderColor": "#B8B8B8", "borderWidth": 10, "cornerRadius": 0},
+        {"key": "illustration-mountain", "shape": "Paragraph", "componentRole": "illustration", "text": "▲      ▲", "x": 82, "y": 270, "width": 206, "height": 92, "fontFamily": "Arial", "fontSize": 44, "textColor": "#2D9FD3", "bold": true},
+        {"key": "illustration-sun", "shape": "Ellipse", "componentRole": "illustration", "text": "", "x": 240, "y": 220, "width": 34, "height": 34, "fontFamily": "Arial", "fontSize": 11, "fill": "#CCCCCC", "textColor": "#333333", "borderColor": "#CCCCCC", "borderWidth": 0, "cornerRadius": 0},
+        {"key": "access-copy", "shape": "Paragraph", "componentRole": "content", "text": "Allow access to find and open files\nstored on your device.", "x": 54, "y": 438, "width": 262, "height": 58, "fontFamily": "Arial", "fontSize": 12, "textColor": "#333333", "bold": true},
+        {"key": "allow-button", "shape": "Rectangle", "componentRole": "button", "text": "Allow Access", "x": 36, "y": 600, "width": 308, "height": 48, "fontFamily": "Arial", "fontSize": 12, "fill": "#2D9FD3", "textColor": "#FFFFFF", "borderColor": "#2D9FD3", "borderWidth": 1, "cornerRadius": 8},
+
+        {"key": "system-frame", "shape": "Rectangle", "text": "", "x": 402, "y": 46, "width": 360, "height": 640, "fontFamily": "Arial", "fontSize": 11, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "system-review-title", "shape": "Paragraph", "text": "S02 · Android System（权限弹窗）", "x": 402, "y": 10, "width": 360, "height": 25, "fontFamily": "Arial", "fontSize": 13.5, "textColor": "#333333", "bold": true},
+        {"key": "system-status", "shape": "Paragraph", "text": "9:41                                      100%", "x": 420, "y": 58, "width": 324, "height": 18, "fontFamily": "Arial", "fontSize": 9, "textColor": "#6B7280"},
+        {"key": "system-app-bar", "shape": "Paragraph", "componentRole": "app-bar", "text": "File Workspace", "x": 430, "y": 94, "width": 200, "height": 32, "fontFamily": "Arial", "fontSize": 16, "textColor": "#333333", "bold": true},
+        {"key": "system-list", "shape": "Rectangle", "componentRole": "list-item", "text": "Recent file\nUpdated today\n\nAnother file\nUpdated yesterday", "x": 430, "y": 150, "width": 304, "height": 210, "fontFamily": "Arial", "fontSize": 11, "fill": "#F7F7F7", "textColor": "#333333", "borderColor": "#D0D0D0", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "system-overlay", "shape": "Rectangle", "componentRole": "overlay", "text": "", "x": 402, "y": 46, "width": 360, "height": 640, "fontFamily": "Arial", "fontSize": 11, "fill": "#00000066", "textColor": "#333333", "borderColor": "#00000000", "borderWidth": 0, "cornerRadius": 0},
+        {"key": "system-dialog", "shape": "Rectangle", "componentRole": "system-surface", "text": "", "x": 430, "y": 226, "width": 304, "height": 310, "fontFamily": "Arial", "fontSize": 11, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#D0D0D0", "borderWidth": 1, "cornerRadius": 16},
+        {"key": "system-icon", "shape": "Ellipse", "componentRole": "icon", "text": "F", "x": 552, "y": 252, "width": 58, "height": 58, "fontFamily": "Arial", "fontSize": 18, "fill": "#EAF5FA", "textColor": "#2D9FD3", "borderColor": "#2D9FD3", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "system-title", "shape": "Paragraph", "componentRole": "content", "text": "Allow File Workspace to access\nfiles on this device?", "x": 454, "y": 326, "width": 256, "height": 58, "fontFamily": "Arial", "fontSize": 13, "textColor": "#333333", "bold": true},
+        {"key": "system-copy", "shape": "Paragraph", "componentRole": "content", "text": "Android controls this permission.", "x": 454, "y": 392, "width": 256, "height": 32, "fontFamily": "Arial", "fontSize": 10, "textColor": "#797979"},
+        {"key": "system-allow", "shape": "Rectangle", "componentRole": "button", "text": "Allow", "x": 454, "y": 444, "width": 256, "height": 38, "fontFamily": "Arial", "fontSize": 11, "fill": "#2D9FD3", "textColor": "#FFFFFF", "borderColor": "#2D9FD3", "borderWidth": 1, "cornerRadius": 8},
+        {"key": "system-cancel", "shape": "Paragraph", "componentRole": "button", "text": "Don't allow", "x": 454, "y": 494, "width": 256, "height": 28, "fontFamily": "Arial", "fontSize": 10, "textColor": "#2D9FD3"},
+
+        {"key": "marker-1-ring", "shape": "Ellipse", "text": "", "x": 807, "y": 46, "width": 26, "height": 26, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#3758CC", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "marker-1-text", "shape": "Ellipse", "text": "1", "x": 809, "y": 48, "width": 22, "height": 22, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#3758CC", "textColor": "#FFFFFF", "borderColor": "#3758CC", "borderWidth": 0, "cornerRadius": 0},
+        {"key": "marker-2-ring", "shape": "Ellipse", "text": "", "x": 807, "y": 260, "width": 26, "height": 26, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#3758CC", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "marker-2-text", "shape": "Ellipse", "text": "2", "x": 809, "y": 262, "width": 22, "height": 22, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#3758CC", "textColor": "#FFFFFF", "borderColor": "#3758CC", "borderWidth": 0, "cornerRadius": 0},
+        {"key": "marker-3-ring", "shape": "Ellipse", "text": "", "x": 807, "y": 470, "width": 26, "height": 26, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#3758CC", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "marker-3-text", "shape": "Ellipse", "text": "3", "x": 809, "y": 472, "width": 22, "height": 22, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#3758CC", "textColor": "#FFFFFF", "borderColor": "#3758CC", "borderWidth": 0, "cornerRadius": 0},
+        {"key": "marker-4-ring", "shape": "Ellipse", "text": "", "x": 807, "y": 700, "width": 26, "height": 26, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#3758CC", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "marker-4-text", "shape": "Ellipse", "text": "4", "x": 809, "y": 702, "width": 22, "height": 22, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#3758CC", "textColor": "#FFFFFF", "borderColor": "#3758CC", "borderWidth": 0, "cornerRadius": 0},
+        {"key": "marker-5-ring", "shape": "Ellipse", "text": "", "x": 807, "y": 940, "width": 26, "height": 26, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#3758CC", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "marker-5-text", "shape": "Ellipse", "text": "5", "x": 809, "y": 942, "width": 22, "height": 22, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#3758CC", "textColor": "#FFFFFF", "borderColor": "#3758CC", "borderWidth": 0, "cornerRadius": 0}
+      ],
+      "notes": [
+        {
+          "key": "page-purpose",
+          "title": "页面说明",
+          "coverage": {"requirementIds": ["R001"], "aspects": ["purpose", "display"]},
+          "x": 845,
+          "y": 46,
+          "width": 322,
+          "lines": [
+            "1、该页面用于在发起文件访问前说明当前任务与授权目的；页面本身不代表系统权限已经授予。",
+            "2、S01 为 App 自定义说明页，S02 为 Android 系统界面示意，两者的负责范围必须分开。",
+            "3、本教学例不确认真实权限类型、支持格式和存储实现，真实项目以当前 PRD 与技术结论为准。"
+          ]
+        },
+        {
+          "key": "page-entry",
+          "title": "页面进入",
+          "coverage": {"requirementIds": ["R001", "R002"], "aspects": ["entry", "reentry"]},
+          "x": 845,
+          "y": 260,
+          "width": 322,
+          "lines": [
+            "1、用户从需要读取文件的业务入口进入；若系统状态尚未满足，则先展示 S01。",
+            "2、若返回时系统状态已经满足，跳过 S01 并回到原业务入口继续；未完成时仍保留再次触发入口。",
+            "3、Later 仅关闭本次说明并返回原入口，不将权限状态记录为成功。"
+          ]
+        },
+        {
+          "key": "interaction",
+          "title": "交互说明",
+          "coverage": {"requirementIds": ["R002"], "aspects": ["trigger", "result", "cancel-return", "system-boundary"]},
+          "x": 845,
+          "y": 470,
+          "width": 322,
+          "lines": [
+            "1、点击 Allow Access 后调起 Android 系统权限界面 S02；S02 的文案、按钮和关闭方式由系统版本决定，App 不自行伪造。",
+            "2、用户在系统界面选择允许后，App 回前台并重新读取真实授权状态；读取成功后返回原任务继续。",
+            "3、用户选择 Don't allow、关闭系统界面或通过系统返回键退出时，回到原业务入口，不自动进入成功流程。"
+          ]
+        },
+        {
+          "key": "boundary",
+          "title": "边界&异常处理",
+          "coverage": {"requirementIds": ["R002"], "aspects": ["failure", "persistence", "reentry", "system-boundary"]},
+          "x": 845,
+          "y": 700,
+          "width": 322,
+          "lines": [
+            "1、系统界面未能调起或返回状态读取失败时，不记录授权成功；原入口保留 Retry，重试当前权限任务而不是重新创建业务对象。",
+            "2、系统状态在 App 外被撤销时，下次进入相关任务重新读取状态并按未满足路径处理。",
+            "3、App 只保存说明页是否展示过等自身状态，不缓存或伪造系统授权结果。"
+          ]
+        },
+        {
+          "key": "art-delivery",
+          "kind": "art",
+          "title": "美术交付说明",
+          "coverage": {"requirementIds": ["R003"], "aspects": ["art-delivery"]},
+          "x": 845,
+          "y": 940,
+          "width": 322,
+          "lines": [
+            "1、S01 中部插画用于表达“文件可被识别和打开”，本例按 1 个独立插画资源计；S02 为系统页面，无需美术重新出图。"
+          ]
+        }
+      ]
+    }
+  ]
+}

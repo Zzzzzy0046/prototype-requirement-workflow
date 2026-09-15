@@ -31,7 +31,7 @@
 
 helper 缺 npm 依赖时才安装锁定依赖。已连接的重复调用不会重装依赖或重开 Axure。新会话存放当前项目 `.axure-session/`，自动选择空闲端口；既有项目沿用原 sessionFile。只输出状态与路径，不输出 token。
 
-就绪后重新读取 `.axure-workflow.json`，将其中 sessionFile、projectRp、outputDirectory 交给 workflow.mjs apply。不要硬编码 `bridge/sessions/trial/session.json`，也不要仅因为启动进程成功就认为已连接。当前流程使用随包 MCP SDK，不要求先注册全局 MCP。
+就绪后重新读取 `.axure-workflow.json`，将其中 sessionFile、projectRp、outputDirectory 交给 workflow.mjs apply。不要硬编码 `bridge/sessions/default/session.json`，也不要仅因为启动进程成功就认为已连接。当前流程使用包内 MCP SDK，不要求先注册全局 MCP。
 
 自动启动是 Agent 执行的按需步骤，不是后台服务或开机启动项。每次 Axure 写入前运行一次即可；操作中途连接断开时不要盲重放写入，先核实结果。
 

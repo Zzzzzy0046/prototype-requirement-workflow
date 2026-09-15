@@ -1,0 +1,111 @@
+{
+  "version": 2,
+  "context": {
+    "productKey": "file-tool-example",
+    "platform": "android",
+    "baselineSourceId": "quality-standard",
+    "taskType": "single-page",
+    "decisionMode": "source-led",
+    "inputCompleteness": "detailed"
+  },
+  "sources": [
+    {
+      "id": "user-request",
+      "kind": "user",
+      "locator": "request.md",
+      "read": true,
+      "identity": {"productKey": "file-tool-example", "platform": "android", "version": "teaching-1"},
+      "block": {"page": "File Access", "role": "requirement", "status": "current"}
+    },
+    {
+      "id": "quality-standard",
+      "kind": "baseline",
+      "locator": "skills/prototype-requirement-writer/references/reference-driven-quality.md",
+      "read": true,
+      "identity": {"productKey": "file-tool-example", "platform": "android", "version": "1.8.0"},
+      "block": {"page": "需求说明标准", "role": "requirement", "status": "current"}
+    },
+    {
+      "id": "permission-pattern",
+      "kind": "reference",
+      "locator": "skills/prototype-requirement-writer/references/rp-pattern-library.md#F",
+      "read": true
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R001",
+      "sourceIds": ["user-request", "quality-standard"],
+      "status": "confirmed",
+      "inScope": true,
+      "pageKey": "file-access",
+      "ruleState": "current",
+      "ruleType": "display",
+      "criticality": "low",
+      "category": "display",
+      "visualChange": false,
+      "module": "页面用途与进入",
+      "statement": "展示文件访问说明页，并完整说明页面用途与进入条件。",
+      "display": "Access Your Files",
+      "trigger": "",
+      "result": "",
+      "boundaries": [],
+      "fieldSources": [
+        {"field": "statement", "sourceIds": ["user-request", "quality-standard"]},
+        {"field": "display", "sourceIds": ["user-request"]}
+      ],
+      "exactCopies": []
+    },
+    {
+      "id": "R002",
+      "sourceIds": ["user-request", "quality-standard"],
+      "status": "confirmed",
+      "inScope": true,
+      "pageKey": "file-access",
+      "ruleState": "current",
+      "ruleType": "behavior",
+      "criticality": "high",
+      "category": "permission",
+      "visualChange": true,
+      "module": "权限触发与系统回流",
+      "statement": "点击主按钮后进入 Android 系统权限界面，并描述允许、取消、拒绝和系统返回后的处理。",
+      "display": "Allow Access",
+      "trigger": "点击 Allow Access",
+      "result": "调起系统权限界面；系统返回后重新读取真实授权状态并进入对应结果。",
+      "boundaries": [
+        "系统界面不是 App 自有页面。",
+        "用户未完成授权时不记录为成功。",
+        "返回后必须重新读取系统状态。"
+      ],
+      "fieldSources": [
+        {"field": "statement", "sourceIds": ["user-request", "quality-standard"]},
+        {"field": "trigger", "sourceIds": ["user-request"]},
+        {"field": "result", "sourceIds": ["quality-standard"]},
+        {"field": "boundaries", "sourceIds": ["quality-standard"]}
+      ],
+      "exactCopies": []
+    },
+    {
+      "id": "R003",
+      "sourceIds": ["user-request", "quality-standard"],
+      "status": "confirmed",
+      "inScope": true,
+      "pageKey": "file-access",
+      "ruleState": "current",
+      "ruleType": "display",
+      "criticality": "low",
+      "category": "art",
+      "visualChange": false,
+      "module": "美术交付",
+      "statement": "插画资源在 App 画框外单独说明表达目的与交付口径。",
+      "display": "",
+      "trigger": "",
+      "result": "",
+      "boundaries": [],
+      "fieldSources": [{"field": "statement", "sourceIds": ["quality-standard"]}],
+      "exactCopies": []
+    }
+  ],
+  "questions": []
+}
+

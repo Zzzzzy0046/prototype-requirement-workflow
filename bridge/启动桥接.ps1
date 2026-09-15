@@ -2,7 +2,7 @@
 param(
  [Parameter(Mandatory)][string]$ProjectRp,
  [string]$AxureExe,
- [string]$SessionName='trial',
+ [string]$SessionName='default',
  [int]$Port=45180,
  [switch]$RegisterMcp,
  [switch]$Resume
@@ -36,8 +36,9 @@ if($Resume){
  & (Join-Path $PSScriptRoot 'start-project.ps1') -AxureExe $AxureExe -ProjectRp $axProject -BridgeDirectory (Join-Path $PSScriptRoot 'bin') -SessionDirectory $axSessionDir -Port $Port
 }
 if($RegisterMcp){
- & codex mcp add axure-live-trial -- $axNode (Join-Path $PSScriptRoot 'mcp-live.mjs') --session $axSessionFile
+ & codex mcp add axure-prototype-bridge -- $axNode (Join-Path $PSScriptRoot 'mcp-live.mjs') --session $axSessionFile
  if($LASTEXITCODE -ne 0){throw 'MCP registration failed; Axure session may already be running. Do not start another copy.'}
 }
 Write-Host "Session ready to check: node verify-connection.mjs --session `"$axSessionFile`""
 Write-Host 'Wait until Axure has opened the correct file. No successful connection is assumed by this launcher.'
+

@@ -1,0 +1,84 @@
+{
+  "version": 2,
+  "delivery": "complete",
+  "includedRequirementIds": ["R001", "R002", "R003"],
+  "template": {"profile": "house-review", "reason": "使用用户 RP 脱敏归纳的通用评审骨架。"},
+  "referenceSelections": [
+    {
+      "pageKey": "file-access",
+      "primarySourceId": "quality-standard",
+      "pattern": "Device / Permission / System handoff",
+      "borrowedAspects": ["state-expression", "control-patterns", "requirement-structure"],
+      "reason": "该页核心是权限说明、系统界面触发和返回后的状态重读。",
+      "prohibitedInheritances": ["原产品名、文件格式、广告位、权限理由、成功判定和系统实现"]
+    }
+  ],
+  "excludedImpacts": [],
+  "pages": [
+    {
+      "key": "file-access",
+      "name": "File Access · 权限与系统回流",
+      "pageType": "screen",
+      "boards": [
+        {"key": "explanation", "purpose": "App 自定义访问说明页", "stateType": "primary"},
+        {"key": "system-permission", "purpose": "Android 系统权限界面", "stateType": "system-handoff"}
+      ]
+    }
+  ],
+  "expressions": [
+    {
+      "requirementId": "R001",
+      "pageKey": "file-access",
+      "boardKey": "explanation",
+      "method": "widget-and-note",
+      "reason": "访问说明页的标题、插画、说明和入口条件配对。",
+      "widgetKeys": ["app-title", "later-action", "access-title", "illustration-box", "illustration-mountain", "illustration-sun", "access-copy"],
+      "noteKeys": ["page-purpose", "page-entry"]
+    },
+    {
+      "requirementId": "R002",
+      "pageKey": "file-access",
+      "boardKey": "explanation",
+      "method": "static-board",
+      "reason": "主按钮是系统权限界面的触发入口。",
+      "widgetKeys": ["allow-button"],
+      "noteKeys": ["page-entry", "interaction", "boundary"]
+    },
+    {
+      "requirementId": "R002",
+      "pageKey": "file-access",
+      "boardKey": "system-permission",
+      "method": "static-board",
+      "reason": "系统弹窗会改变上下文和用户决策，需单独画板。",
+      "widgetKeys": ["system-app-bar", "system-list", "system-overlay", "system-dialog", "system-icon", "system-title", "system-copy", "system-allow", "system-cancel"],
+      "noteKeys": ["page-entry", "interaction", "boundary"]
+    },
+    {
+      "requirementId": "R003",
+      "pageKey": "file-access",
+      "boardKey": "explanation",
+      "method": "note-only",
+      "reason": "美术资源口径写在画框外，不新增业务控件。",
+      "widgetKeys": [],
+      "noteKeys": ["art-delivery"]
+    }
+  ],
+  "decorations": [
+    {"pageKey": "file-access", "widgetKey": "explanation-frame", "role": "frame", "reason": "App 说明页画板"},
+    {"pageKey": "file-access", "widgetKey": "explanation-title", "role": "review-title", "reason": "S01 评审标题"},
+    {"pageKey": "file-access", "widgetKey": "explanation-status", "role": "system-chrome", "reason": "状态栏示意"},
+    {"pageKey": "file-access", "widgetKey": "system-frame", "role": "frame", "reason": "系统弹窗画板"},
+    {"pageKey": "file-access", "widgetKey": "system-review-title", "role": "review-title", "reason": "S02 评审标题"},
+    {"pageKey": "file-access", "widgetKey": "system-status", "role": "system-chrome", "reason": "状态栏示意"},
+    {"pageKey": "file-access", "widgetKey": "marker-1-ring", "role": "number-marker", "reason": "说明编号外圈"},
+    {"pageKey": "file-access", "widgetKey": "marker-1-text", "role": "number-marker", "reason": "说明编号"},
+    {"pageKey": "file-access", "widgetKey": "marker-2-ring", "role": "number-marker", "reason": "说明编号外圈"},
+    {"pageKey": "file-access", "widgetKey": "marker-2-text", "role": "number-marker", "reason": "说明编号"},
+    {"pageKey": "file-access", "widgetKey": "marker-3-ring", "role": "number-marker", "reason": "说明编号外圈"},
+    {"pageKey": "file-access", "widgetKey": "marker-3-text", "role": "number-marker", "reason": "说明编号"},
+    {"pageKey": "file-access", "widgetKey": "marker-4-ring", "role": "number-marker", "reason": "说明编号外圈"},
+    {"pageKey": "file-access", "widgetKey": "marker-4-text", "role": "number-marker", "reason": "说明编号"},
+    {"pageKey": "file-access", "widgetKey": "marker-5-ring", "role": "number-marker", "reason": "说明编号外圈"},
+    {"pageKey": "file-access", "widgetKey": "marker-5-text", "role": "number-marker", "reason": "说明编号"}
+  ]
+}

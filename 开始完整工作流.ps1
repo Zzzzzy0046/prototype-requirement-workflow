@@ -6,7 +6,7 @@ param(
  [switch]$PreviewOnly,
  [switch]$Resume,
  [switch]$RegisterMcp,
- [string]$SessionName='trial',
+ [string]$SessionName='default',
  [int]$Port=45180
 )
 $ErrorActionPreference='Stop'
@@ -26,7 +26,7 @@ if(Test-Path -LiteralPath $wfConfig){
  if($ProjectRp -and $wfPrevious.projectRp -and $wfPrevious.projectRp -ne $ProjectRp){throw 'Workspace is already bound to another RP. Use a new workspace.'}
  if($wfPrevious.sessionName -ne $SessionName){throw 'Workspace session differs; use its original SessionName or a new workspace.'}
 }
-# Do not replace a colleague's customized skill silently.
+# Do not replace an existing customized skill silently.
 if(Test-Path -LiteralPath $wfSkill){
  foreach($wfFile in Get-ChildItem -LiteralPath $wfSource -Recurse -File){
   $wfTarget=Join-Path $wfSkill ([IO.Path]::GetRelativePath($wfSource,$wfFile.FullName))
@@ -47,10 +47,10 @@ if($PreviewOnly -and $wfPrevious -and $wfPrevious.projectRp){$wfData.projectRp=$
 if(!$PreviewOnly){
  $wfArgs=@{ProjectRp=$ProjectRp;SessionName=$SessionName;Port=$Port;RegisterMcp=$RegisterMcp;Resume=$Resume}
  if($AxureExe){$wfArgs.AxureExe=$AxureExe}
- & (Join-Path $PSScriptRoot 'bridge/试用启动.ps1') @wfArgs
+ & (Join-Path $PSScriptRoot 'bridge/启动桥接.ps1') @wfArgs
  & $wfNode (Join-Path $PSScriptRoot 'bridge/verify-connection.mjs') --session $wfData.sessionFile
  if($LASTEXITCODE -ne 0){throw 'Axure connection failed. Do not draw yet; inspect the reported error.'}
 }
 Write-Host "Ready. Open this workspace in your Agent: $wfWorkspace"
-Write-Host 'Use $prototype-requirement-writer and describe your own requirements. See 给Agent的开始提示词.md.'
+Write-Host 'Use $prototype-requirement-writer and describe your requirements. See AGENT-START.md.'
 if($PreviewOnly){Write-Host 'PreviewOnly config does not mean Axure is connected.'}

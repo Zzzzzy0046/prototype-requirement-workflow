@@ -14,6 +14,6 @@ frame 白底、#797979 直角描边及蓝色编号 #3758CC 沿用先前基础控
 
 scene 顶层设置 `"noteProfile":"android-review"`，编译器使用上述说明字体和 322px 默认列宽，而不是旧固定 14/11pt。notes 的 x/y/width 仍可覆盖布局位置，keys 不变。默认 profile 不改变旧场景的样式与坐标。
 
-Agent 按已读取模板创建 frame、review-title、number-marker 普通控件；不是编译器自动往所有页面塞手机框。建议使用完整示例 examples/clarification-home/，不要套用其中的业务内容。
+Agent 按已读取模板创建 frame、review-title、number-marker 普通控件；不是编译器自动往所有页面塞手机框。建议使用 `examples/reference/review-template-library/` 查看通用表达，不要套用其中的业务内容。
 
 若用户要求另一份模板，先提取其参数；如当前 profile 无法表达，明确说明并在项目内制定可验证适配，不暗改 android-review 的通用定义。原文太长时扩大说明区或按语义拆组，不能为了符合示例坐标缩字号或截断。

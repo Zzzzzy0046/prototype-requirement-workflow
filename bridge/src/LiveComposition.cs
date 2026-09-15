@@ -106,22 +106,20 @@ public static partial class LiveOperations {
    ValidatePatch(items[i].GetProperty("patch"),sources[i]);
    if(action=="compose"){var name=items[i].GetProperty("name").GetString();if(string.IsNullOrWhiteSpace(name)||name.Length>100)throw new Exception("Invalid item name");}
   }
-  var groupName=action=="compose"?req.GetProperty("groupName").GetString():null;
-  if(action=="compose"&&(string.IsNullOrWhiteSpace(groupName)||groupName.Length>100))throw new Exception("Invalid group name");
   if(dry)return new{dryRun=true,count=items.Length,action,elapsedMs=timer.ElapsedMilliseconds};
   object result;
   try{
    if(action=="compose"){
-    var root=Make("Axure.DocumentModel.Objects.Layer",fragment);Set(root,"Name",groupName);var created=new List<object>();
+    var created=new List<object>();
     for(int i=0;i<items.Length;i++){
      var clone=InvokeExact(sources[i],"Copy");if(Id(clone)==Id(sources[i]))throw new Exception("Clone ID collision");
      Set(clone,"Name",items[i].GetProperty("name").GetString());Set(clone,"IsLocked",false);
-     Patch(clone,items[i].GetProperty("patch"),false);InvokeExact(root,"Add",clone,i);created.Add(clone);
+     Patch(clone,items[i].GetProperty("patch"),false);created.Add(clone);
     }
     var diagram=svc.GetType().GetMethod("ResolveDiagram",F).Invoke(null,new object[]{fragment,null});
-    var edit=Make("qgLq.mgL7",Enum.Parse(T("Axure.DocumentModel.Edit.DiagramEditAction"),"Add"),diagram,Typed("wRsm.aRsa",new[]{root}.Concat(created)));
+    var edit=Make("qgLq.mgL7",Enum.Parse(T("Axure.DocumentModel.Edit.DiagramEditAction"),"Add"),diagram,Typed("wRsm.aRsa",created));
     Commit(client,editor,edit);
-    result=new{action,groupId=Id(root),count=created.Count,widgets=created.Select(w=>new{widgetId=Id(w),state=State(w),fingerprint=Fingerprint(State(w))}).ToArray(),nativeUndo=true,saved=false,elapsedMs=timer.ElapsedMilliseconds};
+    result=new{action,count=created.Count,widgets=created.Select(w=>new{widgetId=Id(w),state=State(w),fingerprint=Fingerprint(State(w))}).ToArray(),nativeUndo=true,ungrouped=true,saved=false,elapsedMs=timer.ElapsedMilliseconds};
    }else{
     var edits=new List<object>();for(int i=0;i<items.Length;i++)edits.AddRange(Patch(sources[i],items[i].GetProperty("patch"),true));
     if(edits.Count==0)throw new Exception("Empty batch");Commit(client,editor,Combined(edits));
