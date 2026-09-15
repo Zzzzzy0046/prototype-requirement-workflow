@@ -1,8 +1,10 @@
-# 需求到 Axure · 完整试用包 1.6.0
+# 需求到 Axure · 完整试用包 1.7.0
 
 入口仍然是 **prototype-requirement-writer**。你提供自然语言需求、PRD 或参考图；skill 在内部整理输入，生成低保真原型和中文说明，再通过 MCP 写入 Axure。以后继续改同一个 RP。
 
 1.6.0 强化“一句话也能开始”的需求收敛：先读已有资料，区分方案探索/按稿执行/局部修改/虚构示例；该直接做就做，缺关键业务则给简短推荐并提问。内部字段不变成用户长表。RP 路径只在写入前明确，不阻塞可完成的需求理解和本地预览。详见 Skill 的 references/guided-intake.md。
+
+1.7.0 将用户提供的 32 个多产品 RP 归纳成跨产品 `house-review`：新模板统一使用 360px 页面框、框外标题、蓝色编号和紧邻右侧的中文说明。需求概览、单页、多状态、流程、局部迭代/Bugfix、共享规则共用视觉骨架，业务内容仍按当前需求生成。详见 `references/house-review-profile.md` 和 `examples/review-template-library/`。
 
 日常入口示例：`使用 $prototype-requirement-writer，帮我做一个 Printer 主页。` 不要求用户提前声明脚本、模型文件和提问规则。只有关键业务选择交回用户；此版不是自动猜测任意完整产品需求。
 

@@ -3,12 +3,15 @@ const key=z.string().regex(/^[a-z][a-z0-9-]{0,59}$/);
 const color=z.string().regex(/^#[0-9a-f]{6}([0-9a-f]{2})?$/i);
 const table=z.object({columns:z.array(z.string().min(1)).min(1).max(8),rows:z.array(z.array(z.string().max(4000))).min(1).max(100)}).strict().superRefine((v,ctx)=>{if(v.rows.some(r=>r.length!==v.columns.length))ctx.addIssue({code:z.ZodIssueCode.custom,message:'Table rows must match columns'});});
 const note=z.object({key,title:z.string().min(1).max(100),kind:z.enum(['module','shared-rule','change','art']).optional(),lines:z.array(z.string().min(1)).default([]),table:table.optional(),x:z.number().min(0).max(15000).optional(),y:z.number().min(0).max(15000).optional(),width:z.number().min(200).max(2000).optional()}).strict().refine(n=>n.lines.length||n.table,'Note needs lines or table');
+const houseReview={fontFamily:'Arial',titleSize:10.5,bodySize:9,color:'#333333',width:322,titleMin:20,titleLine:21,titleTop:5,bodyGap:1,bodyLine:20,minBody:36};
 export const noteProfiles={
  default:{fontFamily:'Microsoft YaHei',titleSize:14,bodySize:11,color:'#263445',width:570,titleMin:36,titleLine:28,titleTop:0,bodyGap:4,bodyLine:24,minBody:42},
- 'android-review':{fontFamily:'Arial',titleSize:10.5,bodySize:9,color:'#333333',width:322,titleMin:20,titleLine:21,titleTop:5,bodyGap:1,bodyLine:20,minBody:36}
+ 'house-review':houseReview,
+ // Historical alias retained so existing projects keep rendering identically.
+ 'android-review':houseReview
 };
 const widget=z.object({key,shape:z.enum(['Rectangle','Paragraph','Ellipse']),text:z.string().max(4000).default(''),x:z.number().min(0).max(15000),y:z.number().min(0).max(15000),width:z.number().positive().max(4000),height:z.number().positive().max(4000),fontSize:z.number().min(1).max(200).default(11),fontFamily:z.string().min(1).max(120).default('Microsoft YaHei'),bold:z.boolean().default(false),fill:color.optional(),textColor:color.default('#263445'),borderColor:color.default('#CBD5E1'),borderWidth:z.number().min(0).max(20).optional(),cornerRadius:z.number().min(0).max(200).default(0)}).strict();
-export const schema=z.object({version:z.literal(1),project:z.string().min(1).max(100),brief:z.string().min(1),noteProfile:z.enum(['default','android-review']).optional(),assumptions:z.array(z.string()).default([]),outOfScope:z.array(z.string()).default([]),pages:z.array(z.object({key,name:z.string().min(1).max(100).regex(/^[^\x00-\x1f\x7f]+$/),width:z.number().min(200).max(15000),height:z.number().min(200).max(15000),widgets:z.array(widget).min(1),notes:z.array(note).min(1)}).strict()).min(1)}).strict();
+export const schema=z.object({version:z.literal(1),project:z.string().min(1).max(100),brief:z.string().min(1),noteProfile:z.enum(['default','house-review','android-review']).optional(),assumptions:z.array(z.string()).default([]),outOfScope:z.array(z.string()).default([]),pages:z.array(z.object({key,name:z.string().min(1).max(100).regex(/^[^\x00-\x1f\x7f]+$/),width:z.number().min(200).max(15000),height:z.number().min(200).max(15000),widgets:z.array(widget).min(1),notes:z.array(note).min(1)}).strict()).min(1)}).strict();
 export function parseScene(input){
  const scene=schema.parse(input);
  const unique=(values,label)=>{if(new Set(values).size!==values.length)throw Error(`Duplicate ${label}`);};

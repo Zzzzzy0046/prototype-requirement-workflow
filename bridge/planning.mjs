@@ -22,7 +22,7 @@ export const modelSchema=z.object({
 }).strict();
 export const planSchema=z.object({
  version:z.literal(1),delivery:z.enum(['complete','partial']),omissionReason:text.optional(),includedRequirementIds:z.array(id).min(1),
- template:z.object({profile:z.enum(['default','android-review']),reason:text}).strict(),
+ template:z.object({profile:z.enum(['default','house-review','android-review']),reason:text}).strict(),
  excludedImpacts:z.array(z.object({requirementId:id,pageKey:key,reason:text}).strict()).default([]),
  pages:z.array(z.object({key,name:text,boards:z.array(z.object({key,purpose:text}).strict()).min(1)}).strict()).min(1),
  expressions:z.array(z.object({requirementId:id,pageKey:key,boardKey:key,method:z.enum(['widget-and-note','static-board','note-only','widget-only']),reason:text,widgetKeys:z.array(key),noteKeys:z.array(key)}).strict()).min(1),
@@ -113,10 +113,12 @@ export function validatePlan(modelInput,planInput,scene){
   }
   for(const r of widgetRefs){const [pg,k]=r.split('/');if(!actualPages.get(pg)?.widgets.some(w=>w.key===k))fail(`Missing scene widget: ${r}`);}
   for(const r of noteRefs){const [pg,k]=r.split('/');if(!actualPages.get(pg)?.notes.some(n=>n.key===k))fail(`Missing scene note: ${r}`);}
-  if(p.template.profile==='android-review')for(const d of p.decorations){
+  if(['house-review','android-review'].includes(p.template.profile))for(const d of p.decorations){
    const w=actualPages.get(d.pageKey)?.widgets.find(w=>w.key===d.widgetKey);if(!w)continue;
-   if(d.role==='frame'&&(w.shape!=='Rectangle'||w.width!==360||w.height!==640||w.cornerRadius!==0||w.borderColor!=='#797979'||w.fill!=='#FFFFFF'))fail(`Android frame differs from profile: ${d.widgetKey}`);
-   if(d.role==='review-title'&&(w.fontFamily!=='Arial'||w.fontSize!==13.5||!w.bold))fail(`Android review title differs from profile: ${d.widgetKey}`);
+   const wrongFrame=w.shape!=='Rectangle'||w.width!==360||(p.template.profile==='android-review'?w.height!==640:w.height<640)||w.cornerRadius!==0||w.borderColor!=='#797979'||w.fill!=='#FFFFFF';
+   if(d.role==='frame'&&wrongFrame)fail(`Review frame differs from profile: ${d.widgetKey}`);
+   if(d.role==='review-title'&&(w.fontFamily!=='Arial'||w.fontSize!==13.5||!w.bold||w.textColor!=='#333333'))fail(`Review title differs from profile: ${d.widgetKey}`);
+   if(d.role==='number-marker'&&(w.shape!=='Ellipse'||w.width!==w.height||![22,26].includes(w.width)))fail(`Number marker differs from profile: ${d.widgetKey}`);
   }
   for(const r of m.requirements.filter(r=>included.has(r.id)))for(const c of r.exactCopies){
    const t=c.target,pg=actualPages.get(t.pageKey),obj=t.kind==='widget'?pg?.widgets.find(w=>w.key===t.key):pg?.notes.find(n=>n.key===t.key);

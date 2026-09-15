@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "delivery": "complete",
+  "includedRequirementIds": ["R001", "R002", "R003", "R004", "R005", "R006"],
+  "template": {"profile": "house-review", "reason": "依据用户提供的多产品 RP 归纳出的跨产品评审骨架。"},
+  "pages": [
+    {"key": "template-index", "name": "T00 · 模板索引", "boards": [{"key": "main", "purpose": "模板类型与统一排版概览"}]},
+    {"key": "single-page", "name": "T01 · 单页面", "boards": [{"key": "main", "purpose": "单个功能页与紧邻说明"}]},
+    {"key": "multi-state", "name": "T02 · 同页多状态", "boards": [{"key": "default", "purpose": "默认状态"}, {"key": "empty", "purpose": "空状态"}]},
+    {"key": "flow", "name": "T03 · 流程", "boards": [{"key": "main", "purpose": "关键节点与分支说明"}]},
+    {"key": "iteration", "name": "T04 · 局部迭代与 Bugfix", "boards": [{"key": "before", "purpose": "变更前"}, {"key": "after", "purpose": "变更后"}]},
+    {"key": "shared-rules", "name": "T05 · 共享规则与表格", "boards": [{"key": "main", "purpose": "跨页面同步与字段表"}]}
+  ],
+  "expressions": [
+    {"requirementId": "R001", "pageKey": "template-index", "boardKey": "main", "method": "widget-and-note", "reason": "索引卡片与使用说明配对。", "widgetKeys": ["index-heading", "index-types", "index-rule"], "noteKeys": ["index-purpose", "index-boundary"]},
+    {"requirementId": "R002", "pageKey": "single-page", "boardKey": "main", "method": "widget-and-note", "reason": "页面内容、操作与说明配对。", "widgetKeys": ["single-app-title", "single-card", "single-button"], "noteKeys": ["single-purpose", "single-action", "single-art"]},
+    {"requirementId": "R003", "pageKey": "multi-state", "boardKey": "default", "method": "static-board", "reason": "默认状态可视表达。", "widgetKeys": ["state-default-heading", "state-default-card", "state-default-button"], "noteKeys": ["state-purpose"]},
+    {"requirementId": "R003", "pageKey": "multi-state", "boardKey": "empty", "method": "static-board", "reason": "空状态与默认状态共同评审。", "widgetKeys": ["state-empty-heading", "state-empty-message", "state-empty-button"], "noteKeys": ["state-difference"]},
+    {"requirementId": "R004", "pageKey": "flow", "boardKey": "main", "method": "widget-and-note", "reason": "关键节点在画面中展示，条件与边界在说明中闭环。", "widgetKeys": ["flow-entry", "flow-step", "flow-result", "flow-arrow-1", "flow-arrow-2"], "noteKeys": ["flow-purpose", "flow-rules"]},
+    {"requirementId": "R005", "pageKey": "iteration", "boardKey": "before", "method": "static-board", "reason": "保留变更前基线。", "widgetKeys": ["before-heading", "before-card", "before-button"], "noteKeys": ["change-summary"]},
+    {"requirementId": "R005", "pageKey": "iteration", "boardKey": "after", "method": "static-board", "reason": "变更后画板与回归范围。", "widgetKeys": ["after-heading", "after-card", "after-button"], "noteKeys": ["change-scope"]},
+    {"requirementId": "R006", "pageKey": "shared-rules", "boardKey": "main", "method": "widget-and-note", "reason": "画面状态与共享规则表对应。", "widgetKeys": ["shared-heading", "shared-status", "shared-count"], "noteKeys": ["shared-purpose", "shared-table"]}
+  ],
+  "decorations": [
+    {"pageKey": "template-index", "widgetKey": "index-title", "role": "review-title", "reason": "框外评审标题"}, {"pageKey": "template-index", "widgetKey": "index-frame", "role": "frame", "reason": "360px 通用画板"}, {"pageKey": "template-index", "widgetKey": "index-marker-ring", "role": "number-marker", "reason": "说明编号外圈"}, {"pageKey": "template-index", "widgetKey": "index-marker-text", "role": "number-marker", "reason": "说明编号"},
+    {"pageKey": "single-page", "widgetKey": "single-title", "role": "review-title", "reason": "框外评审标题"}, {"pageKey": "single-page", "widgetKey": "single-frame", "role": "frame", "reason": "360px 通用画板"}, {"pageKey": "single-page", "widgetKey": "single-marker-ring", "role": "number-marker", "reason": "说明编号外圈"}, {"pageKey": "single-page", "widgetKey": "single-marker-text", "role": "number-marker", "reason": "说明编号"},
+    {"pageKey": "multi-state", "widgetKey": "state-default-title", "role": "review-title", "reason": "默认状态标题"}, {"pageKey": "multi-state", "widgetKey": "state-default-frame", "role": "frame", "reason": "默认状态画板"}, {"pageKey": "multi-state", "widgetKey": "state-empty-title", "role": "review-title", "reason": "空状态标题"}, {"pageKey": "multi-state", "widgetKey": "state-empty-frame", "role": "frame", "reason": "空状态画板"}, {"pageKey": "multi-state", "widgetKey": "state-marker-ring", "role": "number-marker", "reason": "共同说明编号外圈"}, {"pageKey": "multi-state", "widgetKey": "state-marker-text", "role": "number-marker", "reason": "共同说明编号"},
+    {"pageKey": "flow", "widgetKey": "flow-title", "role": "review-title", "reason": "框外评审标题"}, {"pageKey": "flow", "widgetKey": "flow-frame", "role": "frame", "reason": "流程画板"}, {"pageKey": "flow", "widgetKey": "flow-marker-ring", "role": "number-marker", "reason": "说明编号外圈"}, {"pageKey": "flow", "widgetKey": "flow-marker-text", "role": "number-marker", "reason": "说明编号"},
+    {"pageKey": "iteration", "widgetKey": "before-title", "role": "review-title", "reason": "旧版标题"}, {"pageKey": "iteration", "widgetKey": "before-frame", "role": "frame", "reason": "旧版画板"}, {"pageKey": "iteration", "widgetKey": "after-title", "role": "review-title", "reason": "新版标题"}, {"pageKey": "iteration", "widgetKey": "after-frame", "role": "frame", "reason": "新版画板"}, {"pageKey": "iteration", "widgetKey": "change-marker-ring", "role": "number-marker", "reason": "变更说明编号外圈"}, {"pageKey": "iteration", "widgetKey": "change-marker-text", "role": "number-marker", "reason": "变更说明编号"},
+    {"pageKey": "shared-rules", "widgetKey": "shared-title", "role": "review-title", "reason": "框外评审标题"}, {"pageKey": "shared-rules", "widgetKey": "shared-frame", "role": "frame", "reason": "共享规则示意画板"}, {"pageKey": "shared-rules", "widgetKey": "shared-marker-ring", "role": "number-marker", "reason": "说明编号外圈"}, {"pageKey": "shared-rules", "widgetKey": "shared-marker-text", "role": "number-marker", "reason": "说明编号"}
+  ]
+}

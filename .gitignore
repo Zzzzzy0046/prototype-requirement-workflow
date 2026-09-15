@@ -27,6 +27,7 @@
 *.zip
 !dist/prototype-requirement-workflow-1.5.0.zip
 !dist/prototype-requirement-workflow-1.6.0.zip
+!dist/prototype-requirement-workflow-1.7.0.zip
 /output/
 /tmp/
 /private/

@@ -27,7 +27,7 @@
 
 - version: 1；delivery: complete / partial。
 - includedRequirementIds：本次实际表达的需求。complete 必须覆盖全部 inScope=true 的需求；partial 必须写 omissionReason 并在交付中披露遗漏。
-- template: {profile:"default"|"android-review", reason}。android-review 是可选参考样式，不是所有产品的默认值。
+- template: {profile:"default"|"house-review"|"android-review", reason}。新建原型默认 house-review；android-review 仅为既有项目兼容别名，default 保留旧项目排版，不自动迁移。
 - pages: [{key,name,boards:[{key,purpose}]}]。每个功能页保留自己的身份。静态状态画板属于 boards，不默认变成新页。
 - expressions: [{requirementId,pageKey,boardKey,method,reason,widgetKeys,noteKeys}]。
   - method=widget-and-note：可见入口/行为，控件和说明都要有；

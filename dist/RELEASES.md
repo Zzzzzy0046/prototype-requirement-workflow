@@ -1,5 +1,16 @@
 # 分发包记录
 
+## 1.7.0 · 2026-09-15
+
+- 文件：`prototype-requirement-workflow-1.7.0.zip`
+- 大小：511199 字节；94 个文件条目（93 个清单文件加 SHA256SUMS.txt）。
+- SHA-256：`5EE6483354A2D198B69A5F3C820F51B7CC9771DD19E7B44D90C15C773F2C443F`
+- 变更：新增 RP 原稿派生的跨产品 `house-review`、六类模板和兼容校验；旧 `android-review` 输出保持兼容。
+- 解压后 93 个文件哈希全部匹配；归档未包含 RP、RPLIB、本机路径、会话、映射、私有扫描数据或依赖缓存。
+- 从全新解压目录安装依赖后，53 项自动测试全部通过；六页模板的 model/plan/scene 联合校验无错误或警告，HTML 预览成功；Skill 静态校验通过。
+- Axure 原生 apply 尚未完成：现有 `Printer-Skill-Demo` 主实例运行时，三个独立目标的启动均返回 STARTUP_NOT_READY；未执行写入，目标文件哈希保持不变。关闭现有 Axure 主实例后再继续，不能把 HTML 预览当作 RP 验收。
+- ZIP 已封存；后续内容变更应提升版本，不覆盖同名包。
+
 ## 1.6.0 · 2026-09-15
 
 - 文件：`prototype-requirement-workflow-1.6.0.zip`

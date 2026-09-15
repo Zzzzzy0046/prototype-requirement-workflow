@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "project": "RP 原稿派生 · 通用评审模板库",
+  "brief": "根据用户提供的 32 个 RP 提炼跨产品评审骨架；本文件只展示通用排版和信息结构，不继承原产品业务。",
+  "noteProfile": "house-review",
+  "assumptions": [],
+  "outOfScope": ["原 RP 业务文案和图片资源", "库 Master 无损导入", "复杂交互和动态面板"],
+  "pages": [
+    {
+      "key": "template-index", "name": "T00 · 模板索引", "width": 800, "height": 720,
+      "widgets": [
+        {"key": "index-frame", "shape": "Rectangle", "x": 10, "y": 46, "width": 360, "height": 640, "fontFamily": "Arial", "fontSize": 11, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "index-title", "shape": "Paragraph", "text": "通用 RP 评审模板", "x": 10, "y": 10, "width": 360, "height": 25, "fontFamily": "Arial", "fontSize": 13.5, "textColor": "#333333", "bold": true},
+        {"key": "index-heading", "shape": "Paragraph", "text": "Prototype Template Standards", "x": 34, "y": 78, "width": 302, "height": 54, "fontFamily": "Arial", "fontSize": 18, "textColor": "#333333", "bold": true},
+        {"key": "index-types", "shape": "Rectangle", "text": "T01  Single Page\nT02  Multi-state\nT03  Flow\nT04  Iteration / Bugfix\nT05  Shared Rules / Table", "x": 34, "y": 160, "width": 302, "height": 250, "fontFamily": "Arial", "fontSize": 12, "textColor": "#333333", "fill": "#F7F7F7", "borderColor": "#B8B8B8", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "index-rule", "shape": "Paragraph", "text": "One visual structure.\nDifferent requirement structures.", "x": 34, "y": 450, "width": 302, "height": 70, "fontFamily": "Arial", "fontSize": 12, "textColor": "#333333", "bold": true},
+        {"key": "index-marker-ring", "shape": "Ellipse", "x": 415, "y": 46, "width": 26, "height": 26, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#3758CC", "borderWidth": 1},
+        {"key": "index-marker-text", "shape": "Ellipse", "text": "1", "x": 417, "y": 48, "width": 22, "height": 22, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#3758CC", "textColor": "#FFFFFF", "borderWidth": 0}
+      ],
+      "notes": [
+        {"key": "index-purpose", "title": "模板说明", "x": 453, "y": 46, "width": 322, "lines": ["1、所有新建原型使用同一评审骨架：左侧页面效果，右侧紧邻中文说明。", "2、模板类型只决定需求如何组织，不自动增加产品功能。"]},
+        {"key": "index-boundary", "title": "使用边界", "x": 453, "y": 220, "width": 322, "lines": ["1、旧项目保持既有 profile、页面 key 与控件映射。", "2、复杂图片、Layer 或库 Master 未直接导入时，统一说明为基础控件重建。"]}
+      ]
+    },
+    {
+      "key": "single-page", "name": "T01 · 单页面", "width": 800, "height": 720,
+      "widgets": [
+        {"key": "single-frame", "shape": "Rectangle", "x": 10, "y": 46, "width": 360, "height": 640, "fontFamily": "Arial", "fontSize": 11, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "single-title", "shape": "Paragraph", "text": "Home · 默认状态", "x": 10, "y": 10, "width": 360, "height": 25, "fontFamily": "Arial", "fontSize": 13.5, "textColor": "#333333", "bold": true},
+        {"key": "single-app-title", "shape": "Paragraph", "text": "App Name", "x": 34, "y": 76, "width": 302, "height": 38, "fontFamily": "Arial", "fontSize": 18, "textColor": "#333333", "bold": true},
+        {"key": "single-card", "shape": "Rectangle", "text": "Primary content module", "x": 34, "y": 146, "width": 302, "height": 164, "fontFamily": "Arial", "fontSize": 12, "textColor": "#333333", "fill": "#F7F7F7", "borderColor": "#B8B8B8", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "single-button", "shape": "Rectangle", "text": "Primary Action", "x": 34, "y": 590, "width": 302, "height": 48, "fontFamily": "Arial", "fontSize": 12, "textColor": "#FFFFFF", "fill": "#3758CC", "borderColor": "#3758CC", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "single-marker-ring", "shape": "Ellipse", "x": 415, "y": 46, "width": 26, "height": 26, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#3758CC", "borderWidth": 1},
+        {"key": "single-marker-text", "shape": "Ellipse", "text": "1", "x": 417, "y": 48, "width": 22, "height": 22, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#3758CC", "textColor": "#FFFFFF", "borderWidth": 0}
+      ],
+      "notes": [
+        {"key": "single-purpose", "title": "页面说明", "x": 453, "y": 46, "width": 322, "lines": ["1、先说明该页面的任务、进入条件和本次范围。", "2、页面标题、App UI 和框外评审标题分别表达，不混用。"]},
+        {"key": "single-action", "title": "交互说明", "x": 453, "y": 190, "width": 322, "lines": ["1、每个主要操作写清入口、动作、结果及必要的取消或失败处理。", "2、下游页面未授权绘制时，只说明去向，不自动扩展页面。"]},
+        {"key": "single-art", "kind": "art", "title": "美术交付说明", "x": 453, "y": 410, "width": 322, "lines": ["1、仅列确实需要新增或复用的图片、图标和动效；没有资源需求时删除本段。"]}
+      ]
+    },
+    {
+      "key": "multi-state", "name": "T02 · 同页多状态", "width": 1200, "height": 720,
+      "widgets": [
+        {"key": "state-default-frame", "shape": "Rectangle", "x": 10, "y": 46, "width": 360, "height": 640, "fontFamily": "Arial", "fontSize": 11, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "state-default-title", "shape": "Paragraph", "text": "S01 · Home（默认状态）", "x": 10, "y": 10, "width": 360, "height": 25, "fontFamily": "Arial", "fontSize": 13.5, "textColor": "#333333", "bold": true},
+        {"key": "state-default-heading", "shape": "Paragraph", "text": "Home", "x": 34, "y": 76, "width": 302, "height": 38, "fontFamily": "Arial", "fontSize": 18, "textColor": "#333333", "bold": true},
+        {"key": "state-default-card", "shape": "Rectangle", "text": "Existing item", "x": 34, "y": 150, "width": 302, "height": 92, "fontFamily": "Arial", "fontSize": 12, "textColor": "#333333", "fill": "#F7F7F7", "borderColor": "#B8B8B8", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "state-default-button", "shape": "Rectangle", "text": "Continue", "x": 34, "y": 590, "width": 302, "height": 48, "fontFamily": "Arial", "fontSize": 12, "textColor": "#FFFFFF", "fill": "#3758CC", "borderColor": "#3758CC", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "state-empty-frame", "shape": "Rectangle", "x": 402, "y": 46, "width": 360, "height": 640, "fontFamily": "Arial", "fontSize": 11, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "state-empty-title", "shape": "Paragraph", "text": "S02 · Home（空状态）", "x": 402, "y": 10, "width": 360, "height": 25, "fontFamily": "Arial", "fontSize": 13.5, "textColor": "#333333", "bold": true},
+        {"key": "state-empty-heading", "shape": "Paragraph", "text": "Home", "x": 426, "y": 76, "width": 302, "height": 38, "fontFamily": "Arial", "fontSize": 18, "textColor": "#333333", "bold": true},
+        {"key": "state-empty-message", "shape": "Paragraph", "text": "No items yet", "x": 426, "y": 250, "width": 302, "height": 54, "fontFamily": "Arial", "fontSize": 16, "textColor": "#333333", "bold": true},
+        {"key": "state-empty-button", "shape": "Rectangle", "text": "Create Item", "x": 426, "y": 590, "width": 302, "height": 48, "fontFamily": "Arial", "fontSize": 12, "textColor": "#FFFFFF", "fill": "#3758CC", "borderColor": "#3758CC", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "state-marker-ring", "shape": "Ellipse", "x": 807, "y": 46, "width": 26, "height": 26, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#3758CC", "borderWidth": 1},
+        {"key": "state-marker-text", "shape": "Ellipse", "text": "1", "x": 809, "y": 48, "width": 22, "height": 22, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#3758CC", "textColor": "#FFFFFF", "borderWidth": 0}
+      ],
+      "notes": [
+        {"key": "state-purpose", "title": "页面说明", "x": 845, "y": 46, "width": 322, "lines": ["1、S01 和 S02 都属于 Home，只是数据状态不同，不新建两个功能页。", "2、共同的导航和页面任务只说明一次。"]},
+        {"key": "state-difference", "title": "页面状态", "x": 845, "y": 220, "width": 322, "lines": ["1、S01：已有数据时展示内容与 Continue。", "2、S02：无数据时展示空状态和 Create Item。", "3、权限拒绝、加载失败和筛选无结果不是同一种空状态，需要有需求依据才补画。"]}
+      ]
+    },
+    {
+      "key": "flow", "name": "T03 · 流程", "width": 800, "height": 720,
+      "widgets": [
+        {"key": "flow-frame", "shape": "Rectangle", "x": 10, "y": 46, "width": 360, "height": 640, "fontFamily": "Arial", "fontSize": 11, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "flow-title", "shape": "Paragraph", "text": "核心任务流程", "x": 10, "y": 10, "width": 360, "height": 25, "fontFamily": "Arial", "fontSize": 13.5, "textColor": "#333333", "bold": true},
+        {"key": "flow-entry", "shape": "Rectangle", "text": "1  Entry", "x": 74, "y": 110, "width": 232, "height": 64, "fontFamily": "Arial", "fontSize": 13, "textColor": "#333333", "fill": "#F7F7F7", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "flow-arrow-1", "shape": "Paragraph", "text": "↓", "x": 174, "y": 184, "width": 32, "height": 38, "fontFamily": "Arial", "fontSize": 18, "textColor": "#3758CC", "bold": true},
+        {"key": "flow-step", "shape": "Rectangle", "text": "2  Required Step", "x": 74, "y": 232, "width": 232, "height": 64, "fontFamily": "Arial", "fontSize": 13, "textColor": "#333333", "fill": "#F7F7F7", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "flow-arrow-2", "shape": "Paragraph", "text": "↓", "x": 174, "y": 306, "width": 32, "height": 38, "fontFamily": "Arial", "fontSize": 18, "textColor": "#3758CC", "bold": true},
+        {"key": "flow-result", "shape": "Rectangle", "text": "3  Result", "x": 74, "y": 354, "width": 232, "height": 64, "fontFamily": "Arial", "fontSize": 13, "textColor": "#333333", "fill": "#F7F7F7", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "flow-marker-ring", "shape": "Ellipse", "x": 415, "y": 46, "width": 26, "height": 26, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#3758CC", "borderWidth": 1},
+        {"key": "flow-marker-text", "shape": "Ellipse", "text": "1", "x": 417, "y": 48, "width": 22, "height": 22, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#3758CC", "textColor": "#FFFFFF", "borderWidth": 0}
+      ],
+      "notes": [
+        {"key": "flow-purpose", "title": "流程说明", "x": 453, "y": 46, "width": 322, "lines": ["1、画面只保留需要评审的关键节点；节点名称是模板占位，不是产品默认流程。"]},
+        {"key": "flow-rules", "title": "条件与结果", "x": 453, "y": 170, "width": 322, "lines": ["1、说明进入条件、节点顺序、成功结果及返回位置。", "2、取消、失败、超时和补弹仅在真实需求涉及时补充。", "3、广告、订阅和权限顺序不能从其他产品复制。"]}
+      ]
+    },
+    {
+      "key": "iteration", "name": "T04 · 局部迭代与 Bugfix", "width": 1200, "height": 720,
+      "widgets": [
+        {"key": "before-frame", "shape": "Rectangle", "x": 10, "y": 46, "width": 360, "height": 640, "fontFamily": "Arial", "fontSize": 11, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "before-title", "shape": "Paragraph", "text": "Before · 原规则", "x": 10, "y": 10, "width": 360, "height": 25, "fontFamily": "Arial", "fontSize": 13.5, "textColor": "#333333", "bold": true},
+        {"key": "before-heading", "shape": "Paragraph", "text": "Feature", "x": 34, "y": 76, "width": 302, "height": 38, "fontFamily": "Arial", "fontSize": 18, "textColor": "#333333", "bold": true},
+        {"key": "before-card", "shape": "Rectangle", "text": "Existing content", "x": 34, "y": 150, "width": 302, "height": 150, "fontFamily": "Arial", "fontSize": 12, "textColor": "#333333", "fill": "#F7F7F7", "borderColor": "#B8B8B8", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "before-button", "shape": "Rectangle", "text": "Old Action", "x": 34, "y": 590, "width": 302, "height": 48, "fontFamily": "Arial", "fontSize": 12, "textColor": "#333333", "fill": "#EEEEEE", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "after-frame", "shape": "Rectangle", "x": 402, "y": 46, "width": 360, "height": 640, "fontFamily": "Arial", "fontSize": 11, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "after-title", "shape": "Paragraph", "text": "After · 新规则", "x": 402, "y": 10, "width": 360, "height": 25, "fontFamily": "Arial", "fontSize": 13.5, "textColor": "#333333", "bold": true},
+        {"key": "after-heading", "shape": "Paragraph", "text": "Feature", "x": 426, "y": 76, "width": 302, "height": 38, "fontFamily": "Arial", "fontSize": 18, "textColor": "#333333", "bold": true},
+        {"key": "after-card", "shape": "Rectangle", "text": "Existing content", "x": 426, "y": 150, "width": 302, "height": 150, "fontFamily": "Arial", "fontSize": 12, "textColor": "#333333", "fill": "#F7F7F7", "borderColor": "#B8B8B8", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "after-button", "shape": "Rectangle", "text": "New Action", "x": 426, "y": 590, "width": 302, "height": 48, "fontFamily": "Arial", "fontSize": 12, "textColor": "#FFFFFF", "fill": "#3758CC", "borderColor": "#3758CC", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "change-marker-ring", "shape": "Ellipse", "x": 807, "y": 46, "width": 26, "height": 26, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#3758CC", "borderWidth": 1},
+        {"key": "change-marker-text", "shape": "Ellipse", "text": "1", "x": 809, "y": 48, "width": 22, "height": 22, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#3758CC", "textColor": "#FFFFFF", "borderWidth": 0}
+      ],
+      "notes": [
+        {"key": "change-summary", "kind": "change", "title": "本次改动", "x": 845, "y": 46, "width": 322, "lines": ["1、用旧→新写明发生变化的对象、文案或规则。", "2、只有视觉差异需要评审时才并排画 Before / After。"]},
+        {"key": "change-scope", "kind": "change", "title": "影响范围与回归", "x": 845, "y": 230, "width": 322, "lines": ["1、列出受影响入口、状态和共享数据。", "2、明确沿用部分与不受影响分支；Bugfix 补复现、期望及回归点。", "3、不重绘整款 App，不改无关 key 和布局。"]}
+      ]
+    },
+    {
+      "key": "shared-rules", "name": "T05 · 共享规则与表格", "width": 1140, "height": 760,
+      "widgets": [
+        {"key": "shared-frame", "shape": "Rectangle", "x": 10, "y": 46, "width": 360, "height": 640, "fontFamily": "Arial", "fontSize": 11, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#797979", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "shared-title", "shape": "Paragraph", "text": "Home · 共享状态示例", "x": 10, "y": 10, "width": 360, "height": 25, "fontFamily": "Arial", "fontSize": 13.5, "textColor": "#333333", "bold": true},
+        {"key": "shared-heading", "shape": "Paragraph", "text": "Task Status", "x": 34, "y": 76, "width": 302, "height": 38, "fontFamily": "Arial", "fontSize": 18, "textColor": "#333333", "bold": true},
+        {"key": "shared-status", "shape": "Rectangle", "text": "Completed", "x": 34, "y": 150, "width": 302, "height": 72, "fontFamily": "Arial", "fontSize": 13, "textColor": "#333333", "fill": "#F7F7F7", "borderColor": "#B8B8B8", "borderWidth": 1, "cornerRadius": 0},
+        {"key": "shared-count", "shape": "Paragraph", "text": "History count: 1", "x": 34, "y": 250, "width": 302, "height": 36, "fontFamily": "Arial", "fontSize": 12, "textColor": "#333333"},
+        {"key": "shared-marker-ring", "shape": "Ellipse", "x": 415, "y": 46, "width": 26, "height": 26, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#FFFFFF", "textColor": "#333333", "borderColor": "#3758CC", "borderWidth": 1},
+        {"key": "shared-marker-text", "shape": "Ellipse", "text": "1", "x": 417, "y": 48, "width": 22, "height": 22, "fontFamily": "Arial", "fontSize": 9.75, "fill": "#3758CC", "textColor": "#FFFFFF", "borderWidth": 0}
+      ],
+      "notes": [
+        {"key": "shared-purpose", "kind": "shared-rule", "title": "共享规则", "x": 453, "y": 46, "width": 640, "lines": ["1、同一业务规则只保留一个稳定 id，在实际受影响页面分别表达；未绘制页面记录排除原因。"]},
+        {"key": "shared-table", "kind": "shared-rule", "title": "页面同步表", "x": 453, "y": 180, "width": 640, "lines": ["1、表格保留来源、目标、条件和结果，不简写成“全局同步”。"], "table": {"columns": ["来源", "目标", "触发条件", "结果"], "rows": [["Home", "History", "任务成功", "新增一条完成记录"], ["History", "Home", "删除记录", "仅在需求明确时同步计数"], ["任一页面", "其他页面", "失败或取消", "按当前任务规则保留或恢复状态"]]}}
+      ]
+    }
+  ]
+}

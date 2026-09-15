@@ -2,11 +2,11 @@
 
 将自然语言、PRD、参考图或已有原型整理为有来源的需求、页面表达计划和同源交付物：HTML 预览、中文需求说明、Axure 可编辑基础控件。
 
-当前工作版本：**1.6.0（实验工作流）**。本仓库不包含其他工作台项目的代码或 Git 历史。1.5.0 原始 ZIP 保留，未覆盖。1.6.0 主要改进模糊需求的主动收敛，不扩大 Axure 能力范围。
+当前工作版本：**1.7.0（实验工作流）**。本仓库不包含其他工作台项目的代码或 Git 历史。1.5.0、1.6.0 原始 ZIP 保留，未覆盖。1.7.0 把用户多产品 RP 的稳定共性整理为通用评审格式和六类模板，不扩大 Axure 能力范围。
 
 ## 使用
 
-- 同事试用：下载 [1.6.0 完整 ZIP](dist/prototype-requirement-workflow-1.6.0.zip)，交给可以执行本地脚本的 Agent，按 [完整说明](README-完整工作流.md) 操作。已安装后一句话描述需求即可，不必复制长模板。
+- 同事试用：下载 [1.7.0 完整 ZIP](dist/prototype-requirement-workflow-1.7.0.zip)，交给可以执行本地脚本的 Agent，按 [完整说明](README-完整工作流.md) 操作。已安装后一句话描述需求即可，不必复制长模板。
 - Skill 入口：[prototype-requirement-writer](skills/prototype-requirement-writer/SKILL.md)。已安装后可用 `$prototype-requirement-writer` 调用。
 - Agent 负责常规依赖检查及启动脚本；首次仍需使用目标 Axure 新建并保存空白 RP。包不含 Axure 软件、授权或模型账号。
 - 只要文字/HTML 时不启动 Axure；要求完整流程时才连接、写入、回读和原生渲染。
@@ -48,10 +48,12 @@ node bridge/workflow.mjs preview --spec examples/shared-rules/scene.json --out o
 
 1.6.0 复跑原 52 项测试通过，并使用三个独立 Agent 完成六轮合成输入的引导/生成/修改检查。方法与边界见 [主动收敛行为试跑](docs/INTAKE-EVALUATION.md)，不是同事独立设备或大样本统计验证。
 
+1.7.0 只读盘点 32 个用户 RP，新增跨产品 `house-review` 和六类模板；当前 53 项自动测试通过，模板规划无警告，六页 HTML 预览已生成。详细证据与取舍见 [RP 规范盘点](docs/RP-STANDARD-STUDY.md)。Axure 原生写入仍需目标实例独占启动，不能用 HTML 结果冒充 RP 已写入。
+
 这是非官方本地实验桥接，不是 Axure 官方写入 API。原生编辑非跨页事务；外部修改/未知 pending 会阻止继续。自动反向同步、初始空白 RP 自动创建、页面删除/重命名、复杂控件和任意 HTML 无损转换均不在当前保证范围。
 
 ## 数据与分发
 
 只发送未运行的 ZIP。原始 RP、私人素材、需求、扫描结果、会话/令牌、映射、运行历史、真实业务指标不纳入仓库。合成示例不代表真实用户决策。私有仓库不等于可以忽略数据检查。
 
-`SHA256SUMS.txt` 对应当前 1.6.0 包内内容，不含仓库额外 README、对话记录及 ZIP；旧 1.5.0 清单仍在旧 ZIP 内。各 ZIP 校验见 [dist/RELEASES.md](dist/RELEASES.md)。
+`SHA256SUMS.txt` 对应当前 1.7.0 包内内容，不含仓库额外 README、对话记录及 ZIP；旧版本清单仍在各自 ZIP 内。各 ZIP 校验见 [dist/RELEASES.md](dist/RELEASES.md)。
